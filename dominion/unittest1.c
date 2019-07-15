@@ -20,7 +20,7 @@ int main ()
     struct gameState G;
     int seed = time(0);
 
-    G = newGame();
+    &G = newGame();
 
     /***************************
      * Player sells an estate
