@@ -40,9 +40,9 @@ int main ()
     // Play the baron card
     playCard(0, 1, -1, -1, &G);
 
-    printf("*******************************\n")
+    printf("*******************************\n");
     printf("TEST 1: Player sells an estate.\n");
-    printf("*******************************\n")
+    printf("*******************************\n");
     printf("Player's hand where there should be an estate: %d\n",  G.hand[G.whoseTurn][1]);
     assert( G.hand[G.whoseTurn][1] == -1);
     printf("Player's coins: %d\n",  G.coins);
@@ -72,9 +72,9 @@ int main ()
     // Play the baron card
     playCard(0, 0, -1, -1, &G);
 
-    printf("*******************************\n")
+    printf("*******************************\n");
     printf("TEST 2: Player chooses to draw an estate.\n");
-    printf("*******************************\n")
+    printf("*******************************\n");
     printf("Player's hand where there should be an estate: %d\n",  G.hand[G.whoseTurn][1]);
     assert( G.hand[G.whoseTurn][1] == estate);
     printf("Player's coins: %d\n",  G.coins);
@@ -107,9 +107,9 @@ int main ()
     // Play the baron card
     playCard(0, 1, -1, -1, &G);
 
-    printf("*******************************\n")
+    printf("*******************************\n");
     printf("TEST 3: Player chooses to draw an estate.\n");
-    printf("*******************************\n")
+    printf("*******************************\n");
     printf("Player's hand where there should be an estate: %d\n",  G.hand[G.whoseTurn][1]);
     assert( G.hand[G.whoseTurn][1] == estate);
     printf("Player's coins: %d\n",  G.coins);
