@@ -777,7 +777,7 @@ void discardEstate(int currentPlayer, struct gameState *state)
       state->discardCount[currentPlayer]++;
       for (;p < state->handCount[currentPlayer]; p++)
       {
-        state->hand[currentPlayer][p] = state->hand[currentPlayer][p-1];
+        state->hand[currentPlayer][p] = state->hand[currentPlayer][p + 1];
       }
 
       state->hand[currentPlayer][state->handCount[currentPlayer]] = -1;
