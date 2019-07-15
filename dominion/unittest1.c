@@ -20,7 +20,7 @@ int main ()
     struct gameState G;
     int seed = time(0);
 
-    &G = newGame();
+    memset(&G, 23, sizeof(struct gameState));
 
     /***************************
      * Player sells an estate
