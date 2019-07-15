@@ -26,19 +26,20 @@ int main (int argc, char** argv) {
     adventurerPos = -1;
     for (i = 0; i < numHandCards(&G); i++) {
       if (handCard(i, &G) == copper)
-    money++;
+        money++;
       else if (handCard(i, &G) == silver)
-    money += 2;
+        money += 2;
       else if (handCard(i, &G) == gold)
-    money += 3;
+        money += 3;
       else if (handCard(i, &G) == smithy)
-    smithyPos = i;
+        smithyPos = i;
       else if (handCard(i, &G) == adventurer)
-    adventurerPos = i;
+        adventurerPos = i;
     }
 
     if (whoseTurn(&G) == 0) {
-      if (smithyPos != -1) {
+      if (smithyPos != -1)
+      {
         printf("0: smithy played from position %d\n", smithyPos);
         playCard(smithyPos, -1, -1, -1, &G);
         printf("smithy played.\n");

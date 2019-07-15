@@ -1,4 +1,4 @@
-CFLAGS= -Wall -fpic -coverage -lm -std=c99
+CFLAGS= -Wall -fpic -coverage -lm -std=c99 -ftest-coverage -fprofile-arcs
 
 rngs.o: rngs.h rngs.c
 	gcc -c rngs.c -g  $(CFLAGS)
@@ -29,6 +29,10 @@ runtests: testDrawCard
 	gcov dominion.c >> unittestresult.out
 	cat dominion.c.gcov >> unittestresult.out
 
+unitTest1: unittest1.c dominion.c rngs.c
+	gcc -o unittest1 unittest1.c dominion.c rngs.c $(CFLAGS)
+	unittest1 >> unittestresults.out
+	gcov dominion.c -b -f >> unittestresults.out
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
