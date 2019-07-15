@@ -1309,7 +1309,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case baron:
-      baronCard(choice1, choice2, currentPlayer, state);
+      baronCard(choice1, currentPlayer, state);
 		
     case great_hall:
       //+1 Card
@@ -1351,7 +1351,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case tribute:
-      tributeCard(choice1, choice2, currentPlayer, nextPlayer, state, handPos, tributeRevealedCards);
+      tributeCard(currentPlayer, nextPlayer, state, tributeRevealedCards);
       
     case ambassador:
       ambassadorCard(choice1, choice2, currentPlayer, state, handPos);
