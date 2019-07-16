@@ -13,5 +13,103 @@
 
 int main ()
 {
+    int i, j, k;
+    int numPlayer;
+    int k[10] = {adventurer, council_room, feast, gardens, mine,
+                 remodel, smithy, village, baron, great_hall};
+    struct gameState G;
+    int seed = time(0);
+    int playersCards[MAX_PLAYERS][MAX_HAND];
+    int playersHandSize[MAX_PLAYERS];
+
+    // Run test for all configurations of players
+    for (i = 2; i <= MAX_PLAYERS; i++)
+    {
+        printf("*******************************\n");
+        printf("TEST %d\n", (i - 1));
+        printf("*******************************\n");
+        // init a new game
+        initializeGame(numPlayer, k, seed, &G);
+
+        // Save the player's hand and handsize
+        for (j = 0; j < G.handCount[0])
+        {
+            playersCards[0][j] = G.hand[0][j];
+        }
+        playersHandSize[0] = G.handCount[0];
+
+        // Call drawCards x5 for all other players until they have 5
+        for (j = 1; j < i; j++)
+        {
+            // Give even mnumbered players 4 cards
+            if (j % 2 == 0)
+            {
+                for (k = 0; k < 4; k++)
+                {
+                    drawCard(j, &G);
+                }
+            }
+
+            // Give everyone else 5 cards
+            else
+            {
+                for (k = 0; k < 5; k++)
+                {
+                    drawCard(j, &G);
+                }
+            }
+            
+            // Save the player's hand and handsize
+            for (k = 0; k < G.handCount[0])
+            {
+                playersCards[j][k] = G.hand[j][k];
+            }
+            playersHandSize[j] = G.handCount[j];
+        }
+
+        // Play minion card
+        playCard(0, 0, 1, 0, &G);
+
+        // Check the player's hands
+        for (j = 0; j < i; i++)
+        {
+            printf("-------------------------------\n");
+            printf("PLAYER %d\n", j;
+            printf("-------------------------------\n");
+            
+            // check starting player's hand
+            if (j == 0)
+            {
+                printf("Size of player %d's hand: %d\n", j, G.handCount[j]);
+                assert(G.handCount[j] == 4);
+            }
+
+            else if (j % 2 == 0)
+            {
+                printf("Size of player %d's hand: %d -> %d\n", j, playersHandSize[j], G.handCount[j]);
+                assert(G.handCount[j] == playersHandSize[j]);
+                for (k = 0; k < G.handCount[j]; k++)
+                {
+                    printf("Expected: %d || Found: %d\n", playersCards[j][k], G.hand[j][k]);
+                    assert(playersCards[j][k] == G.hand[j][k]);
+                }
+            }
+
+            else
+            {
+                printf("Size of player %d's hand: %d -> %d\n", j, playersHandSize[j], G.handCount[j]);
+                assert(G.handCount[j] < playersHandSize[j]);
+                for (k = 0; k < G.handCount[j]; k++)
+                {
+                    printf("Expected: %d || Found: %d\n", playersCards[j][k], G.hand[j][k]);
+                }
+            }
+            
+        }
+
+        // Clear out the contents of gameState
+        memset(&G, '\0', sizeof(struct gameState));
+    }
+
     return 0;
 }
