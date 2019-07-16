@@ -43,14 +43,12 @@ int main ()
     playCard(0, 1, -1, -1, &G);
 
     printf("*******************************\n");
-    printf("TEST 1: Player sells an estate.\n");
+    printf("TEST 1: Player discards an estate.\n");
     printf("*******************************\n");
     printf("Player's hand where there should be an estate: %d\n",  G.hand[G.whoseTurn][1]);
-    // assert( G.hand[G.whoseTurn][1] == -1);
-    printf("Player's coins: %d\n",  G.coins);
-    // assert( G.coins == 4);
+    assert( G.hand[G.whoseTurn][1] == -1);
     printf("Player's numBuys: %d\n",  G.numBuys);
-    // assert( G.numBuys == 2);
+    assert( G.numBuys == 2);
 
     // Clear out the contents of gameState
     memset(&G, '\0', sizeof(struct gameState));
@@ -77,12 +75,12 @@ int main ()
     printf("*******************************\n");
     printf("TEST 2: Player chooses to draw an estate.\n");
     printf("*******************************\n");
+    printf("Player's number of discarded cards: %d\n", G.discardCount[G.whoseTurn]);
+    assert( G.discardCount[G.whoseTurn] == 1);
     printf("Player's discard where there should be an estate: %d\n", G.discard[G.whoseTurn][G.discardCount[G.whoseTurn]]);
-    // assert( G.discard[G.whoseTurn][G.discardCount[G.whoseTurn]] == estate);
-    printf("Player's coins: %d\n",  G.coins);
-    // assert( G.coins == 0);
+    assert( G.discard[G.whoseTurn][G.discardCount[G.whoseTurn]] == estate);
     printf("Player's numBuys: %d\n",  G.numBuys);
-    // assert( G.numBuys == 2);
+    assert( G.numBuys == 2);
 
     // Clear out the contents of gameState
     memset(&G, '\0', sizeof(struct gameState));
@@ -110,14 +108,14 @@ int main ()
     playCard(0, 1, -1, -1, &G);
 
     printf("*******************************\n");
-    printf("TEST 3: Player chooses to sell an estate but has to draw an estate.\n");
+    printf("TEST 3: Player chooses to discard an estate but has to draw an estate.\n");
     printf("*******************************\n");
+    printf("Player's number of discarded cards: %d\n", G.discardCount[G.whoseTurn]);
+    assert( G.discardCount[G.whoseTurn] == 1);
     printf("Player's discard where there should be an estate: %d\n",  G.discard[G.whoseTurn][G.discardCount[G.whoseTurn]]);
-    // assert( G.discard[G.whoseTurn][G.discardCount[G.whoseTurn]] == estate);
-    printf("Player's coins: %d\n",  G.coins);
-    // assert( G.coins == 0);
+    assert( G.discard[G.whoseTurn][G.discardCount[G.whoseTurn]] == estate);
     printf("Player's numBuys: %d\n",  G.numBuys);
-    // assert( G.numBuys == 2);
+    assert( G.numBuys == 2);
 
 
     return 0;
