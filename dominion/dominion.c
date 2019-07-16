@@ -772,7 +772,9 @@ void discardEstate(int currentPlayer, struct gameState *state)
   {
     if (state->hand[currentPlayer][p] == estate)//Found an estate card!
     {
+      printf("Found estate card!\n");
       state->coins += 4;//Add 4 coins to the amount of coins
+      printf("New amount of coins: %d\n", state->coins);
       state->discard[currentPlayer][state->discardCount[currentPlayer]] = state->hand[currentPlayer][p];
       state->discardCount[currentPlayer]++;
       for (;p < state->handCount[currentPlayer]; p++)
@@ -819,6 +821,7 @@ void gainEstate(int currentPlayer, struct gameState *state)
 {
   if (supplyCount(estate, state) > 0)
   {
+    printf("Gained an estate!\n");
     gainCard(estate, state, 0, currentPlayer);//Gain an estate
     state->supplyCount[estate]--;//Decrement Estates
     if (supplyCount(estate, state) == 0)
