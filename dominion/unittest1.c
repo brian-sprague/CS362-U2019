@@ -77,7 +77,7 @@ int main ()
     printf("*******************************\n");
     printf("Player's number of discarded cards: %d\n", G.discardCount[G.whoseTurn]);
     assert( G.discardCount[G.whoseTurn] == 1);
-    printf("Player's discard where there should be an estate: %d\n", G.discard[G.whoseTurn][G.discardCount[G.whoseTurn]]);
+    printf("Player's discard where there should be an estate: %d\n", G.discard[G.whoseTurn][G.discardCount[G.whoseTurn] - 1]);
     assert( G.discard[G.whoseTurn][G.discardCount[G.whoseTurn]] == estate);
     printf("Player's numBuys: %d\n",  G.numBuys);
     assert( G.numBuys == 2);
@@ -112,7 +112,7 @@ int main ()
     printf("*******************************\n");
     printf("Player's number of discarded cards: %d\n", G.discardCount[G.whoseTurn]);
     assert( G.discardCount[G.whoseTurn] == 1);
-    printf("Player's discard where there should be an estate: %d\n",  G.discard[G.whoseTurn][G.discardCount[G.whoseTurn]]);
+    printf("Player's discard where there should be an estate: %d\n",  G.discard[G.whoseTurn][G.discardCount[G.whoseTurn] - 1]);
     assert( G.discard[G.whoseTurn][G.discardCount[G.whoseTurn]] == estate);
     printf("Player's numBuys: %d\n",  G.numBuys);
     assert( G.numBuys == 2);
