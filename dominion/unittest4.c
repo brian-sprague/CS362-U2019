@@ -76,14 +76,14 @@ int main ()
         {
             printf("Size of player 0's discard: %d\n", G.deckCount[0]);
             // assert(G.discardCount[0] == 1);
-            printf("Number of actions for player 0: %d\n", G.numActions);
-            // assert(G.numActions == 3);
         }
 
         else if (i == 2 || i == 4)
         {
             printf("Size of player 0's discard: %d\n", G.deckCount[0]);
             // assert(G.discardCount[0] == 3);
+            printf("Number of actions for player 0: %d\n", G.numActions);
+            // assert(G.numActions == 3);
         }
 
         // Clear out the contents of gameState
