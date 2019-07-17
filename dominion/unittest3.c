@@ -24,38 +24,38 @@ int main ()
     // Run test for all configurations of players
     for (i = 2; i <= MAX_PLAYERS; i++)
     {
-        printf("*******************************\n");
-        printf("TEST %d\n", (i - 1));
-        printf("*******************************\n");
-        // init a new game
-        initializeGame(i, kCards, seed, &G);
-        
-        G.hand[0][0] = ambassador;
-        G.hand[0][1] = copper;
-        G.hand[0][2] = copper;
-        G.handCount[0] = 3;
-
-        // Save the player's hand and handsize
-        for (j = 0; j < G.numPlayers; j++)
-        {
-            for (h = 0; h < G.handCount[0]; h++)
-            {
-                if (j == 0)
-                {
-                    playersHandSize[j] = G.handCount[j];
-                    playersCards[j][h] = G.hand[j][h];
-                }
-
-                else
-                {
-                    playersHandSize[j] = G.discardCount[j];
-                    playersCards[j][h] = G.discard[j][h];
-                }
-            }
-        }
-
         for (j = 0; j < 3; j++)
         {
+            printf("*******************************\n");
+            printf("TEST %d\n", (i - 1));
+            printf("*******************************\n");
+            // init a new game
+            initializeGame(i, kCards, seed, &G);
+            
+            G.hand[0][0] = ambassador;
+            G.hand[0][1] = copper;
+            G.hand[0][2] = copper;
+            G.handCount[0] = 3;
+
+            // Save the player's hand and handsize
+            for (j = 0; j < G.numPlayers; j++)
+            {
+                for (h = 0; h < G.handCount[0]; h++)
+                {
+                    if (j == 0)
+                    {
+                        playersHandSize[j] = G.handCount[j];
+                        playersCards[j][h] = G.hand[j][h];
+                    }
+
+                    else
+                    {
+                        playersHandSize[j] = G.discardCount[j];
+                        playersCards[j][h] = G.discard[j][h];
+                    }
+                }
+            }
+
             printf("*******************************\n");
             printf("TEST: %d players, %d coppers selected\n", i, j);
             printf("*******************************\n");
@@ -86,10 +86,10 @@ int main ()
                     }
                 }
             }
-        }
 
-        // Clear out the contents of gameState
-        memset(&G, '\0', sizeof(struct gameState));
+            // Clear out the contents of gameState
+            memset(&G, '\0', sizeof(struct gameState));
+        }
     }
 
     return 0;
