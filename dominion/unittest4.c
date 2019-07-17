@@ -20,7 +20,7 @@ int main ()
     struct gameState G;
     int seed = time(0);
 
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < 7; i++)
     {
         // init a new game
         initializeGame(numPlayers, kCards, seed, &G);
