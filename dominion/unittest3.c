@@ -69,6 +69,7 @@ int main ()
                 if (k == 0)
                 {
                     printf("Size of player %d's hand: %d -> %d\n", k, playersHandSize[k], G.handCount[k]);
+                    assert(G.handCount[k] == (4 - j));
                     for (h = 0; h < G.handCount[k]; h++)
                     {
                         printf("Before: %d || After: %d\n", playersCards[k][h], G.hand[k][h]);
@@ -78,9 +79,11 @@ int main ()
                 else
                 {
                     printf("Size of player %d's discard: %d -> %d\n", k, playersHandSize[k], G.discardCount[k]);
+                    assert(G.discardCount[k] == 1);
                     for (h = 0; h < G.discardCount[k]; h++)
                     {
                         printf("Before: %d || After: %d\n", playersCards[k][h], G.discard[k][h]);
+                        assert(G.discard[k][h] == copper);
                     }
                 }
             }
