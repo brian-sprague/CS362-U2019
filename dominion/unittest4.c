@@ -60,6 +60,18 @@ int main ()
             G.deckCount[1] = 2;
         }
 
+        else if (i == 5)
+        {
+            G.discard[1][0] = estate;
+            G.discardCount[1] = 1;
+        }
+
+        else if (i == 6)
+        {
+            G.discard[1][0] = estate;
+            G.discardCount[1] = 1;
+        }
+
         // Play tribute card
         playCard(0, 0, 0, 0, &G);
 
@@ -69,19 +81,19 @@ int main ()
 
         if (i == 0) // Play treasury card card
         {
-            printf("Size of player 0's discard: %d\n", G.deckCount[0]);
+            printf("Size of player 0's deck: %d\n", G.deckCount[0]);
             // assert(G.discardCount[0] == 1);
         }
 
         else if ( i == 1 || i == 3) // Play victory card
         {
-            printf("Size of player 0's discard: %d\n", G.deckCount[0]);
+            printf("Size of player 0's deck: %d\n", G.deckCount[0]);
             // assert(G.discardCount[0] == 1);
         }
 
         else if (i == 2 || i == 4)
         {
-            printf("Size of player 0's discard: %d\n", G.deckCount[0]);
+            printf("Size of player 0's deck: %d\n", G.deckCount[0]);
             // assert(G.discardCount[0] == 3);
             printf("Number of actions for player 0: %d\n", G.numActions);
             // assert(G.numActions == 3);
