@@ -49,7 +49,7 @@ int main ()
                 printf("-------------------------------\n");
 
                 // check all players's hand
-                rintf("Size of player %d's hand: %d -> %d\n", k, playersHandSize[k], G.handCount[k]);
+                printf("Size of player %d's hand: %d -> %d\n", k, playersHandSize[k], G.handCount[k]);
                 for (h = 0; h < G.handCount[k]; h++)
                 {
                     printf("Expected: %d || Found: %d\n", playersCards[k][h], G.hand[k][h]);
