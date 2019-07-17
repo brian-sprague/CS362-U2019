@@ -70,7 +70,8 @@ int main ()
         else if (i == 6)
         {
             G.discard[1][0] = estate;
-            G.discardCount[1] = 1;
+            G.discard[1][1] = feast;
+            G.discardCount[1] = 2;
             G.deckCount[1] = 0;
         }
 
