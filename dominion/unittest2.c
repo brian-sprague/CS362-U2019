@@ -13,7 +13,7 @@
 
 int main ()
 {
-    int i, j, k;
+    int i, j, h;
     int numPlayer;
     int k[10] = {adventurer, council_room, feast, gardens, mine,
                  remodel, smithy, village, baron, great_hall};
@@ -32,7 +32,7 @@ int main ()
         initializeGame(numPlayer, k, seed, &G);
 
         // Save the player's hand and handsize
-        for (j = 0; j < G.handCount[0])
+        for (j = 0; j < G.handCount[0]; j++)
         {
             playersCards[0][j] = G.hand[0][j];
         }
@@ -44,7 +44,7 @@ int main ()
             // Give even mnumbered players 4 cards
             if (j % 2 == 0)
             {
-                for (k = 0; k < 4; k++)
+                for (h = 0; h < 4; h++)
                 {
                     drawCard(j, &G);
                 }
@@ -53,16 +53,16 @@ int main ()
             // Give everyone else 5 cards
             else
             {
-                for (k = 0; k < 5; k++)
+                for (h = 0; h < 5; h++)
                 {
                     drawCard(j, &G);
                 }
             }
             
             // Save the player's hand and handsize
-            for (k = 0; k < G.handCount[0])
+            for (h = 0; h < G.handCount[0]; h++)
             {
-                playersCards[j][k] = G.hand[j][k];
+                playersCards[j][h] = G.hand[j][h];
             }
             playersHandSize[j] = G.handCount[j];
         }
@@ -71,12 +71,12 @@ int main ()
         playCard(0, 0, 1, 0, &G);
 
         // Check the player's hands
-        for (j = 0; j < i; i++)
+        for (j = 0; j < i; j++)
         {
             printf("-------------------------------\n");
             printf("PLAYER %d\n", j;
             printf("-------------------------------\n");
-            
+
             // check starting player's hand
             if (j == 0)
             {
@@ -88,10 +88,10 @@ int main ()
             {
                 printf("Size of player %d's hand: %d -> %d\n", j, playersHandSize[j], G.handCount[j]);
                 assert(G.handCount[j] == playersHandSize[j]);
-                for (k = 0; k < G.handCount[j]; k++)
+                for (h = 0; h < G.handCount[j]; h++)
                 {
-                    printf("Expected: %d || Found: %d\n", playersCards[j][k], G.hand[j][k]);
-                    assert(playersCards[j][k] == G.hand[j][k]);
+                    printf("Expected: %d || Found: %d\n", playersCards[j][h], G.hand[j][h]);
+                    assert(playersCards[j][h] == G.hand[j][h]);
                 }
             }
 
@@ -99,9 +99,9 @@ int main ()
             {
                 printf("Size of player %d's hand: %d -> %d\n", j, playersHandSize[j], G.handCount[j]);
                 assert(G.handCount[j] < playersHandSize[j]);
-                for (k = 0; k < G.handCount[j]; k++)
+                for (h = 0; h < G.handCount[j]; h++)
                 {
-                    printf("Expected: %d || Found: %d\n", playersCards[j][k], G.hand[j][k]);
+                    printf("Expected: %d || Found: %d\n", playersCards[j][h], G.hand[j][h]);
                 }
             }
             
