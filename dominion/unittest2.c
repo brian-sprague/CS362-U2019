@@ -37,6 +37,8 @@ int main ()
         }
         playersHandSize[0] = G.handCount[0];
 
+        G.hand[0][0] = minion;
+
         // Call drawCards x5 for all other players until they have 5
         for (j = 1; j < i; j++)
         {
