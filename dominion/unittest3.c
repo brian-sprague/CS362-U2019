@@ -31,7 +31,7 @@ int main ()
             printf("*******************************\n");
             // init a new game
             initializeGame(i, kCards, seed, &G);
-            
+            G.whoseTurn = 0;
             G.hand[0][0] = ambassador;
             G.hand[0][1] = copper;
             G.hand[0][2] = copper;
@@ -80,7 +80,7 @@ int main ()
                 else
                 {
                     printf("Size of player %d's discard: %d -> %d\n", k, playersHandSize[k], G.discardCount[k]);
-                    for (h = 0; h < G.handCount[k]; h++)
+                    for (h = 0; h < G.discardCount[k]; h++)
                     {
                         printf("Before: %d || After: %d\n", playersCards[k][h], G.discard[k][h]);
                     }
