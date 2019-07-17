@@ -83,24 +83,24 @@ int main ()
             {
                 printf("Size of player %d's hand was: %d\n", j, playersHandSize[j]);
                 printf("Size of player %d's hand is: %d\n", j, G.handCount[j]);
-                assert(G.handCount[j] == 4);
+                // assert(G.handCount[j] == 4);
             }
 
             else if (j % 2 == 0)
             {
                 printf("Size of player %d's hand: %d -> %d\n", j, playersHandSize[j], G.handCount[j]);
-                assert(G.handCount[j] == playersHandSize[j]);
+                // assert(G.handCount[j] == playersHandSize[j]);
                 for (h = 0; h < G.handCount[j]; h++)
                 {
                     printf("Expected: %d || Found: %d\n", playersCards[j][h], G.hand[j][h]);
-                    assert(playersCards[j][h] == G.hand[j][h]);
+                    // assert(playersCards[j][h] == G.hand[j][h]);
                 }
             }
 
             else
             {
                 printf("Size of player %d's hand: %d -> %d\n", j, playersHandSize[j], G.handCount[j]);
-                assert(G.handCount[j] < playersHandSize[j]);
+                // assert(G.handCount[j] < playersHandSize[j]);
                 for (h = 0; h < G.handCount[j]; h++)
                 {
                     printf("Expected: %d || Found: %d\n", playersCards[j][h], G.hand[j][h]);
