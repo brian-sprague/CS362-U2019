@@ -81,7 +81,8 @@ int main ()
             // check starting player's hand
             if (j == 0)
             {
-                printf("Size of player %d's hand: %d\n", j, G.handCount[j]);
+                printf("Size of player %d's hand was: %d\n", j, playersHandSize[j]);
+                printf("Size of player %d's hand is: %d\n", j, G.handCount[j]);
                 assert(G.handCount[j] == 4);
             }
 
