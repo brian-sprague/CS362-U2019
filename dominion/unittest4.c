@@ -85,10 +85,10 @@ int main ()
             printf("Size of player 0's discard: %d\n", G.discardCount[0]);
             // assert(G.discardCount[0] == 3);
         }
-    }
 
-    // Clear out the contents of gameState
-    memset(&G, '\0', sizeof(struct gameState));
+        // Clear out the contents of gameState
+        memset(&G, '\0', sizeof(struct gameState));
+    }
 
     return 0;
 }
