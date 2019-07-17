@@ -14,7 +14,6 @@
 int main ()
 {
     int i, j, h;
-    int numPlayer;
     int k[10] = {adventurer, council_room, feast, gardens, mine,
                  remodel, smithy, village, baron, great_hall};
     struct gameState G;
@@ -29,7 +28,7 @@ int main ()
         printf("TEST %d\n", (i - 1));
         printf("*******************************\n");
         // init a new game
-        initializeGame(numPlayer, k, seed, &G);
+        initializeGame(i, k, seed, &G);
 
         // Save the player's hand and handsize
         for (j = 0; j < G.handCount[0]; j++)
