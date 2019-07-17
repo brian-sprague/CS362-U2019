@@ -40,11 +40,20 @@ int main ()
         {
             for (h = 0; h < G.handCount[0]; h++)
             {
-                playersCards[j][h] = G.hand[j][h];
+                if (j == 0)
+                {
+                    playersHandSize[j] = G.handCount[j];
+                    playersCards[j][h] = G.hand[j][h];
+                }
+
+                else
+                {
+                    playersHandSize[j] = G.discardCount[j];
+                    playersCards[j][h] = G.discard[j][h];
+                }
             }
-            playersHandSize[j] = G.handCount[j];
         }
-        
+
         for (j = 0; j < 3; j++)
         {
             printf("*******************************\n");
@@ -59,11 +68,22 @@ int main ()
                 printf("PLAYER %d\n", k);
                 printf("-------------------------------\n");
 
-                // check all players's hand
-                printf("Size of player %d's hand: %d -> %d\n", k, playersHandSize[k], G.handCount[k]);
-                for (h = 0; h < G.handCount[k]; h++)
+                if (k == 0)
                 {
-                    printf("Expected: %d || Found: %d\n", playersCards[k][h], G.hand[k][h]);
+                    printf("Size of player %d's hand: %d -> %d\n", k, playersHandSize[k], G.discardCount[k]);
+                    for (h = 0; h < G.handCount[k]; h++)
+                    {
+                        printf("Before: %d || After: %d\n", playersCards[k][h], G.hand[k][h]);
+                    }
+                }
+
+                else
+                {
+                    printf("Size of player %d's discard: %d -> %d\n", k, playersHandSize[k], G.discardCount[k]);
+                    for (h = 0; h < G.handCount[k]; h++)
+                    {
+                        printf("Before: %d || After: %d\n", playersCards[k][h], G.discard[k][h]);
+                    }
                 }
             }
         }
