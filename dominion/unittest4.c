@@ -14,6 +14,7 @@
 int main ()
 {
     int i;
+    int numPlayers = 2;
     int kCards[10] = {adventurer, council_room, feast, gardens, mine,
                  remodel, smithy, village, baron, great_hall};
     struct gameState G;
@@ -22,7 +23,7 @@ int main ()
     for (i = 0; i < 5; i++)
     {
         // init a new game
-        initializeGame(i, kCards, seed, &G);
+        initializeGame(numPlayers, kCards, seed, &G);
         G.whoseTurn = 0;
         G.hand[0][0] = tribute;
         G.handCount[0] = 1;
