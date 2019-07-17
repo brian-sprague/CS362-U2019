@@ -879,7 +879,7 @@ int minionCard(int choice1, int choice2, int currentPlayer, struct gameState *st
     //other players discard hand and redraw if hand size > 4
     for (i = 0; i < state->numPlayers; i++)
     {
-      if (i != currentPlayer && state->handCount[i] > 4 )
+      if (i != currentPlayer && state->handCount[i] == 4 )
       {
         //discard hand
         while( state->handCount[i] > 0 )
@@ -888,7 +888,7 @@ int minionCard(int choice1, int choice2, int currentPlayer, struct gameState *st
         }
               
         //draw 4
-        for (j = 0; j < 4; j++)
+        for (i = 0; i < 4; i++)
         {
           drawCard(i, state);
         }
