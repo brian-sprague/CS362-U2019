@@ -13,13 +13,11 @@
 
 int main ()
 {
-    int h, i, j, k;
+    int i;
     int kCards[10] = {adventurer, council_room, feast, gardens, mine,
                  remodel, smithy, village, baron, great_hall};
     struct gameState G;
     int seed = time(0);
-    int playersCards[MAX_PLAYERS][MAX_HAND];
-    int playersHandSize[MAX_PLAYERS];
 
     for (i = 0; i < 5; i++)
     {
@@ -31,34 +29,34 @@ int main ()
 
         if (i == 0) // single treasury card
         {
-            G.hand[1][0] = copper;  // treasure / 4
-            G.handCount[1] = 1;
+            G.deck[1][0] = copper;  // treasure / 4
+            G.deckCount[1] = 1;
         }
 
         else if (i == 1) // single victory card
         {
-            G.hand[1][0] = estate;  // victory / 1
-            G.handCount[1] = 1;
+            G.deck[1][0] = estate;  // victory / 1
+            G.deckCount[1] = 1;
         }
         
         else if (i == 2) // single action card
         {
-            G.hand[1][0] = feast;   // action / 9
-            G.handCount[1] = 1;
+            G.deck[1][0] = feast;   // action / 9
+            G.deckCount[1] = 1;
         }
 
         else if (i == 3) // two victory cards
         {
-            G.hand[1][0] = estate;  // victory / 1
-            G.hand[1][1] = estate;  // victory / 1
-            G.handCount[1] = 2;
+            G.deck[1][0] = estate;  // victory / 1
+            G.deck[1][1] = estate;  // victory / 1
+            G.deckCount[1] = 2;
         }
         
         else if (i == 4) // two action cards
         {
-            G.hand[1][0] = feast;   // action / 9
-            G.hand[1][1] = feast;   // action / 9
-            G.handCount[1] = 2;
+            G.deck[1][0] = feast;   // action / 9
+            G.deck[1][1] = feast;   // action / 9
+            G.deckCount[1] = 2;
         }
 
         // Play tribute card
