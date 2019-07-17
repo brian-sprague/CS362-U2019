@@ -70,7 +70,7 @@ int main ()
 
                 if (k == 0)
                 {
-                    printf("Size of player %d's hand: %d -> %d\n", k, playersHandSize[k], G.discardCount[k]);
+                    printf("Size of player %d's hand: %d -> %d\n", k, playersHandSize[k], G.handCount[k]);
                     for (h = 0; h < G.handCount[k]; h++)
                     {
                         printf("Before: %d || After: %d\n", playersCards[k][h], G.hand[k][h]);
