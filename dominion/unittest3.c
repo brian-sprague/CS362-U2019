@@ -38,20 +38,20 @@ int main ()
             G.handCount[0] = 3;
 
             // Save the player's hand and handsize
-            for (j = 0; j < G.numPlayers; j++)
+            for (k = 0; k < G.numPlayers; k++)
             {
                 for (h = 0; h < G.handCount[0]; h++)
                 {
-                    if (j == 0)
+                    if (k == 0)
                     {
-                        playersHandSize[j] = G.handCount[j];
-                        playersCards[j][h] = G.hand[j][h];
+                        playersHandSize[k] = G.handCount[k];
+                        playersCards[k][h] = G.hand[k][h];
                     }
 
                     else
                     {
-                        playersHandSize[j] = G.discardCount[j];
-                        playersCards[j][h] = G.discard[j][h];
+                        playersHandSize[k] = G.discardCount[k];
+                        playersCards[k][h] = G.discard[k][h];
                     }
                 }
             }
