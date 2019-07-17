@@ -30,10 +30,21 @@ int main ()
         // init a new game
         initializeGame(i, kCards, seed, &G);
         
-        G.hand[0][0] = ambassador;
-        G.hand[0][1] = copper;
-        G.hand[0][2] = copper;
-    
+        G.hand[G.whoseTurn][0] = ambassador;
+        G.hand[G.whoseTurn][1] = copper;
+        G.hand[G.whoseTurn][2] = copper;
+        G.handCount[G.whoseTurn] = 3;
+
+        // Save the player's hand and handsize
+        for (j = 0; j < G.numPlayers; j++)
+        {
+            for (h = 0; h < G.handCount[0]; h++)
+            {
+                playersCards[j][h] = G.hand[j][h];
+            }
+            playersHandSize[j] = G.handCount[j];
+        }
+        
         for (j = 0; j < 3; j++)
         {
             printf("*******************************\n");
