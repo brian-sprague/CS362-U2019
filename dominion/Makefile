@@ -39,6 +39,11 @@ unittest2: unittest2.c dominion.o rngs.o
 	unittest2 >> unittest2results.out
 	gcov dominion.c -b -f >> unittest2results.out
 
+unittest3: unittest3.c dominion.o rngs.o
+	gcc -o unittest3 unittest3.c -g dominion.o rngs.o $(CFLAGS)
+	unittest3 >> unittest3results.out
+	gcov dominion.c -b -f >> unittest3results.out
+
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
