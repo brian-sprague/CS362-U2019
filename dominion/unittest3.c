@@ -26,9 +26,6 @@ int main ()
     {
         for (j = 0; j < 3; j++)
         {
-            printf("*******************************\n");
-            printf("TEST %d\n", (i - 1));
-            printf("*******************************\n");
             // init a new game
             initializeGame(i, kCards, seed, &G);
             G.whoseTurn = 0;
