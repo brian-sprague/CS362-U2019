@@ -74,7 +74,7 @@ int main ()
         for (j = 0; j < i; j++)
         {
             printf("-------------------------------\n");
-            printf("PLAYER %d\n", j;
+            printf("PLAYER %d\n", j);
             printf("-------------------------------\n");
 
             // check starting player's hand
@@ -104,7 +104,6 @@ int main ()
                     printf("Expected: %d || Found: %d\n", playersCards[j][h], G.hand[j][h]);
                 }
             }
-            
         }
 
         // Clear out the contents of gameState
