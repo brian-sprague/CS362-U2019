@@ -35,7 +35,8 @@ int main ()
             G.hand[0][0] = ambassador;
             G.hand[0][1] = copper;
             G.hand[0][2] = copper;
-            G.handCount[0] = 3;
+            G.hand[0][3] = copper;
+            G.handCount[0] = 4;
 
             // Save the player's hand and handsize
             for (k = 0; k < G.numPlayers; k++)
