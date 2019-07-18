@@ -32,7 +32,7 @@ int main ()
         }
         else if (i == 3)
         {
-            assert(G.supplyCount[curse] == 20)
+            assert(G.supplyCount[curse] == 20);
         }
         else
         {
