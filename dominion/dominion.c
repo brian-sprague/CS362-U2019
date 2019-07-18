@@ -1071,7 +1071,7 @@ int mineCard(int choice1, int choice2, int currentPlayer, struct gameState *stat
 
   j = state->hand[currentPlayer][choice1];  //store card we will trash
 
-  if (state->hand[currentPlayer][choice1] < copper || state->hand[currentPlayer][choice1] > gold)
+  if (state->hand[currentPlayer][choice1] > copper || state->hand[currentPlayer][choice1] < gold)
   {
     return -1;
   }
@@ -1081,7 +1081,7 @@ int mineCard(int choice1, int choice2, int currentPlayer, struct gameState *stat
     return -1;
   }
 
-  if ( (getCost(state->hand[currentPlayer][choice1]) + 3) > getCost(choice2) )
+  if ( getCost(state->hand[currentPlayer][choice1]) > getCost(choice2) )
   {
     return -1;
   }
