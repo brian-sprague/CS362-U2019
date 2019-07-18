@@ -20,6 +20,13 @@ int main ()
     int seed = time(0);
     int refDeck[MAX_DECK];
     int sameCards = 0;
+
+    printf("*******************************\n");
+    printf("cardtest2.c TEST - shuffle\n");
+    printf("*******************************\n");
+    printf("*******************************\n");
+    printf("TEST: Cards should be in new order after shuffling.\n");
+    printf("*******************************\n");
     
     initializeGame(2, kCards, seed, &G);
 
@@ -47,6 +54,9 @@ int main ()
     printf("Amount of 3-card sequences from the old deck to new deck: %d / 500\n", sameCards);
     assert(sameCards <= 200);
 
+    printf("*******************************\n");
+    printf("TEST COMPLETE.\n");
+    printf("*******************************\n");
 
     return 0;
 }

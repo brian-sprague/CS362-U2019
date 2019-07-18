@@ -22,7 +22,12 @@ int main ()
 
     // Test drawing from deck
 
-    printf("CARDTEST5");
+    printf("*******************************\n");
+    printf("cardtest5.c TESTS - drawCard\n");
+    printf("*******************************\n");
+    printf("*******************************\n");
+    printf("TEST 1: Player draws from deck.\n");
+    printf("*******************************\n");
 
     initializeGame(numPlayers, kCards, seed, &G);
     
@@ -37,6 +42,10 @@ int main ()
     memset(&G, '\0', sizeof(struct gameState));
 
     // Test empty deck, moving cards from discard
+
+    printf("*******************************\n");
+    printf("TEST 2: Player draws from empty deck.\n");
+    printf("*******************************\n");
 
     initializeGame(numPlayers, kCards, seed, &G);
 
@@ -65,6 +74,10 @@ int main ()
     assert(G.discardCount[0] == 0);
     printf("Size of player's deck: %d\n", G.deckCount[0]);
     assert(G.deckCount[0] == 9);
+
+    printf("*******************************\n");
+    printf("TESTS COMPLETE.\n");
+    printf("*******************************\n");
     
     return 0;
 }

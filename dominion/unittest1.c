@@ -25,6 +25,9 @@ int main ()
     /***************************
      * Player sells an estate
      **************************/
+    printf("*******************************\n");
+    printf("unittest1.c TESTS - Baron\n");
+    printf("*******************************\n");
 
     // init a new game
     initializeGame(numPlayer, k, seed, &G);
@@ -117,6 +120,9 @@ int main ()
     printf("Player's numBuys: %d\n",  G.numBuys);
     assert( G.numBuys == 2);
 
+    printf("*******************************\n");
+    printf("TESTS COMPLETE.\n");
+    printf("*******************************\n");
 
     return 0;
 }

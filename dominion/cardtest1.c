@@ -20,8 +20,15 @@ int main ()
     int seed = time(0);
     int numEstates, numTreasure;
 
+    printf("*******************************\n");
+    printf("cardtest1.c TESTS - initializeGame\n");
+    printf("*******************************\n");
+
     for (i = 2; i <= MAX_PLAYERS; i++)
     {
+        printf("*******************************\n");
+        printf("TEST %d: %d Players.\n", i - 1, i);
+        printf("*******************************\n");
         initializeGame(i, kCards, seed, &G);
         printf("Number of players: %d\n", G.numPlayers);
         assert(G.numPlayers == i);
@@ -108,6 +115,10 @@ int main ()
         
         memset(&G, '\0', sizeof(struct gameState));
     }
+
+    printf("*******************************\n");
+    printf("TEST COMPLETE.\n");
+    printf("*******************************\n");
 
     return 0;
 }

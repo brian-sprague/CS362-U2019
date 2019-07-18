@@ -21,6 +21,13 @@ int main ()
     int seed = time(0);
     int players[MAX_PLAYERS];
 
+    printf("*******************************\n");
+    printf("cardtest4.c TESTS - getWinners\n");
+    printf("*******************************\n");
+    printf("*******************************\n");
+    printf("TEST 1: Player 1 wins outright.\n");
+    printf("*******************************\n");
+
     // First player wins outright
     initializeGame(numPlayers, kCards, seed, &G);
 
@@ -81,6 +88,9 @@ int main ()
 
     assert(players[0] == 1);
     memset(&G, '\0', sizeof(struct gameState));
+    printf("*******************************\n");
+    printf("TEST 2: Player 2 wins due to not having as many turns.\n");
+    printf("*******************************\n");
 
     // Second player wins due to not having as many turns
     initializeGame(numPlayers, kCards, seed, &G);
@@ -138,6 +148,10 @@ int main ()
     }
 
     assert(players[1] == 1);
+
+    printf("*******************************\n");
+    printf("TESTS COMPLETE.\n");
+    printf("*******************************\n");
     
     return 0;
 }

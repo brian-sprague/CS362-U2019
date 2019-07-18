@@ -19,6 +19,13 @@ int main ()
     struct gameState G;
     int seed = time(0);
 
+    printf("*******************************\n");
+    printf("unittest5.c TEST - Mine\n");
+    printf("*******************************\n");
+    printf("*******************************\n");
+    printf("Test: Player should have Silver in their hand\n");
+    printf("*******************************\n");
+
     // init a new game
     initializeGame(numPlayers, kCards, seed, &G);
     G.whoseTurn = 0;
@@ -32,6 +39,10 @@ int main ()
     assert(G.hand[0][0] == 5);
     printf("Number of cards in player's hand: %d\n", G.handCount[0]);
     assert(G.handCount[0] == 1);
+
+    printf("*******************************\n");
+    printf("TEST COMPLETE.\n");
+    printf("*******************************\n");
 
     return 0;
 }

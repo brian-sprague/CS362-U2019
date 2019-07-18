@@ -21,6 +21,10 @@ int main ()
     int playersCards[MAX_PLAYERS][MAX_HAND];
     int playersHandSize[MAX_PLAYERS];
 
+    printf("*******************************\n");
+    printf("unittest2.c TESTS - Minion\n");
+    printf("*******************************\n");
+
     // Run test for all configurations of players
     for (i = 2; i <= MAX_PLAYERS; i++)
     {
@@ -111,6 +115,11 @@ int main ()
         // Clear out the contents of gameState
         memset(&G, '\0', sizeof(struct gameState));
     }
+
+    printf("*******************************\n");
+    printf("TESTS COMPLETE.\n");
+    printf("*******************************\n");
+
 
     return 0;
 }

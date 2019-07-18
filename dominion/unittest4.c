@@ -20,6 +20,10 @@ int main ()
     struct gameState G;
     int seed = time(0);
 
+    printf("*******************************\n");
+    printf("unittest4.c TESTS - Tribute\n");
+    printf("*******************************\n");
+
     for (i = 0; i < 7; i++)
     {
         // init a new game
@@ -111,6 +115,10 @@ int main ()
         // Clear out the contents of gameState
         memset(&G, '\0', sizeof(struct gameState));
     }
+
+    printf("*******************************\n");
+    printf("TESTS COMPLETE.\n");
+    printf("*******************************\n");
 
     return 0;
 }

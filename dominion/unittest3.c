@@ -21,6 +21,10 @@ int main ()
     int playersCards[MAX_PLAYERS][MAX_HAND];
     int playersHandSize[MAX_PLAYERS];
 
+    printf("*******************************\n");
+    printf("unittest3.c TESTS - Ambassador\n");
+    printf("*******************************\n");
+
     // Run test for all configurations of players
     for (i = 2; i <= MAX_PLAYERS; i++)
     {
@@ -92,6 +96,10 @@ int main ()
             memset(&G, '\0', sizeof(struct gameState));
         }
     }
+
+    printf("*******************************\n");
+    printf("TESTS COMPLETE.\n");
+    printf("*******************************\n");
 
     return 0;
 }
