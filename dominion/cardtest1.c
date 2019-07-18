@@ -106,7 +106,7 @@ int main ()
             assert(numTreasure == 7);
         }
         
-        
+        memset(&G, '\0', sizeof(struct gameState));
     }
 
     return 0;

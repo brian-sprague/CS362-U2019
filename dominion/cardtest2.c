@@ -1,7 +1,7 @@
 /********************************************************************
 * Author: Brian Sprague
 * Assignment 3
-* cardtest1.c
+* cardtest2.c
 ********************************************************************/
 
 #include "dominion.h"
@@ -45,7 +45,7 @@ int main ()
     }
 
     printf("Amount of 3-card sequences from the old deck to new deck: %d / 500\n", sameCards);
-    // assert(sameCards <= 200);
+    assert(sameCards <= 200);
 
 
     return 0;
