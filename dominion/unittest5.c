@@ -29,9 +29,9 @@ int main ()
     playCard(0, G.hand[0][1], (G.hand[0][1] + 1), 0, &G);
 
     printf("Card in player's hand: %d\n", G.hand[0][0]);
-    // assert(G.hand[0][0] == 5);
+    assert(G.hand[0][0] == 5);
     printf("Number of cards in player's hand: %d\n", G.handCount[0]);
-    // assert(G.handCount[0] == 1);
+    assert(G.handCount[0] == 1);
 
     return 0;
 }
