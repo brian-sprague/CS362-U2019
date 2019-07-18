@@ -24,7 +24,7 @@ int main ()
     initializeGame(numPlayers, kCards, seed, &G);
     G.whoseTurn = 0;
     G.hand[0][0] = mine;
-    G.hand[0][0] = copper;
+    G.hand[0][1] = copper;
     G.handCount[0] = 2;
 
     playCard(0, G.hand[0][1], (G.hand[0][1] + 1), 0, &G);
