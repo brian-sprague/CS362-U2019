@@ -20,7 +20,7 @@ int main ()
     int seed = time(0);
     int numEstates, numTreasure;
 
-    for (i = 2; i < MAX_PLAYERS; i++)
+    for (i = 2; i <= MAX_PLAYERS; i++)
     {
         initializeGame(i, kCards, seed, &G);
         printf("Number of players: %d\n", G.numPlayers);
