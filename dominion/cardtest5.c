@@ -22,6 +22,8 @@ int main ()
 
     // Test drawing from deck
 
+    printf("CARDTEST5");
+
     initializeGame(numPlayers, kCards, seed, &G);
     
     drawCard(0, &G);
