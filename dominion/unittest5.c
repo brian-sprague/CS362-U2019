@@ -13,7 +13,6 @@
 
 int main ()
 {
-    int i;
     int numPlayers = 2;
     int kCards[10] = {adventurer, council_room, feast, gardens, mine,
                  remodel, smithy, village, baron, great_hall};
