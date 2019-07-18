@@ -64,6 +64,11 @@ cardtest2: cardtest2.c dominion.o rngs.o
 	cardtest2 >> cardtest2results.out
 	gcov dominion.c -b -f >> cardtest2results.out
 
+cardtest3: cardtest3.c dominion.o rngs.o
+	gcc -o cardtest3 cardtest3.c -g dominion.o rngs.o $(CFLAGS)
+	cardtest3 >> cardtest3results.out
+	gcov dominion.c -b -f >> cardtest3results.out
+
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
