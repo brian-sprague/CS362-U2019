@@ -26,13 +26,13 @@ int main ()
 
         for (j = 0; j < i; j++)
         {
-            printf(" Current player: %d\n", (j + 1));
+            printf(" Current player: %d\n", G.whoseTurn;
             assert(G.whoseTurn == j);
             endTurn(&G);
         }
 
-        printf(" Current player: %d\n", (j + 1));
-        assert(G.whoseTurn == j);
+        printf(" Current player: %d\n", G.whoseTurn;
+        assert(G.whoseTurn == 0);
 
         memset(&G, '\0', sizeof(struct gameState));
     }
