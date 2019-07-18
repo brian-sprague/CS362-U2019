@@ -45,26 +45,29 @@ int main ()
     G.discard[0][4] = province;
     G.discardCount[0] = 5;
 
-    G.hand[1][0] = estate;
+    G.hand[1][0] = curse;
     G.hand[1][1] = estate;
-    G.hand[1][2] = estate;
-    G.hand[1][3] = estate;
-    G.hand[1][4] = estate;
-    G.handCount[1] = 5;
+    G.hand[1][2] = duchy;
+    G.hand[1][3] = province;
+    G.hand[1][4] = great_hall;
+    G.hand[1][5] = gardens;
+    G.handCount[1] = 6;
 
-    G.deck[1][0] = estate;
+    G.deck[1][0] = curse;
     G.deck[1][1] = estate;
-    G.deck[1][2] = estate;
-    G.deck[1][3] = estate;
-    G.deck[1][4] = estate;
-    G.deckCount[1] = 5;
+    G.deck[1][2] = duchy;
+    G.deck[1][3] = province;
+    G.deck[1][4] = great_hall;
+    G.deck[1][5] = gardens;
+    G.deckCount[1] = 6;
 
-    G.discard[1][0] = estate;
+    G.discard[1][0] = curse;
     G.discard[1][1] = estate;
-    G.discard[1][2] = estate;
-    G.discard[1][3] = estate;
-    G.discard[1][4] = estate;
-    G.discardCount[1] = 5;
+    G.discard[1][2] = duchy;
+    G.discard[1][3] = province;
+    G.discard[1][4] = great_hall;
+    G.discard[1][5] = gardens;
+    G.discardCount[1] = 6;
 
     getWinners(players, &G);
 
