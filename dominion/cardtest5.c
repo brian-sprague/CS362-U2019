@@ -29,7 +29,7 @@ int main ()
     assert(G.handCount[0] == 6);
     printf("Size of player's discard: %d\n", G.discardCount[0]);
     assert(G.discardCount[0] == 0);
-    printf("Size of player's deck: %d\n", G.deckCount);
+    printf("Size of player's deck: %d\n", G.deckCount[0]);
     assert(G.deckCount[0] == 4);
 
     memset(&G, '\0', sizeof(struct gameState));
@@ -61,7 +61,7 @@ int main ()
     assert(G.handCount[0] == 1);
     printf("Size of player's discard: %d\n", G.discardCount[0]);
     assert(G.discardCount[0] == 0);
-    printf("Size of player's deck: %d\n", G.deckCount);
+    printf("Size of player's deck: %d\n", G.deckCount[0]);
     assert(G.deckCount[0] == 9);
     
     return 0;
