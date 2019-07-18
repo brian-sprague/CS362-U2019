@@ -24,12 +24,12 @@ int main ()
     initializeGame(2, kCards, seed, &G);
 
     k = 0;
-    for (i = 0; i < 10; i++)
+    for (i = 0; i < 25; i++)
     {
-        for (j = 0; j < 5; j++)
+        for (j = 0; j < 20; j++)
         {
-            G.deck[0][k] = kCards[i];
-            refDeck[k] = kCards[i];
+            G.deck[0][k] = i;
+            refDeck[k] = i;
             k++;
         }
     }
