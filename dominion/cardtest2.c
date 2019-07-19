@@ -8,8 +8,20 @@
 #include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
-#include <assert.h>
 #include <time.h>
+
+void assertTrue(int val1, int val2)
+{
+    if (val1 == val2)
+    {
+        printf("TEST PASSES.\n");
+    }
+
+    else
+    {
+        printf("TEST FAILS.\n");
+    }
+}
 
 int main ()
 {
@@ -36,6 +48,7 @@ int main ()
         for (j = 0; j < 20; j++)
         {
             G.deck[0][k] = i;
+            G.deckCount++;
             refDeck[k] = i;
             k++;
         }
@@ -52,7 +65,7 @@ int main ()
     }
 
     printf("Amount of 3-card sequences from the old deck to new deck: %d / 500\n", sameCards);
-    assert(sameCards <= 200);
+    assertTrue(sameCards, 200);
 
     printf("*******************************\n");
     printf("TEST COMPLETE.\n");

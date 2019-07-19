@@ -8,8 +8,20 @@
 #include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
-#include <assert.h>
 #include <time.h>
+
+void assertTrue(int val1, int val2)
+{
+    if (val1 == val2)
+    {
+        printf("TEST PASSES.\n");
+    }
+
+    else
+    {
+        printf("TEST FAILS.\n");
+    }
+}
 
 int main ()
 {
@@ -31,22 +43,43 @@ int main ()
         printf("*******************************\n");
         initializeGame(i, kCards, seed, &G);
         printf("Number of players: %d\n", G.numPlayers);
-        assert(G.numPlayers == i);
+        assertTrue(G.numPlayers, i);
         printf("Number of curse cards: %d\n", G.supplyCount[curse]);
         if (i == 2)
         {
-            assert(G.supplyCount[curse] == 10);
+            assertTrue(G.supplyCount[curse], 10);
         }
         else if (i == 3)
         {
-            assert(G.supplyCount[curse] == 20);
+            assertTrue(G.supplyCount[curse], 20);
         }
         else
         {
-            assert(G.supplyCount[curse] == 30);
+            assertTrue(G.supplyCount[curse], 30);
         }
 
-        
+        printf("Number of estate cards: %d\n", G.supplyCount[estate]);
+        printf("Number of duchy cards: %d\n", G.supplyCount[duchy]);
+        printf("Number of province cards: %d\n", G.supplyCount[province]);
+        if (i == 2)
+        {
+            assertTrue(G.supplyCount[estate], 8);
+            assertTrue(G.supplyCount[duchy], 8);
+            assertTrue(G.supplyCount[province], 8);
+        }
+        else
+        {
+            assertTrue(G.supplyCount[estate], 12);
+            assertTrue(G.supplyCount[duchy], 12);
+            assertTrue(G.supplyCount[province], 12);
+        }
+
+        printf("Number of copper cards: %d\n", G.supplyCount[copper]);
+        printf("Number of silver cards: %d\n", G.supplyCount[silver]);
+        printf("Number of gold cards: %d\n", G.supplyCount[gold]);
+        assertTrue(G.supplyCount[copper], 60 - (7 * G.numPlayers));
+        assertTrue(G.supplyCount[silver], 40);
+        assertTrue(G.supplyCount[gold], 30);
 
         for (i = 0; i < G.numPlayers; i++)
         {
@@ -82,9 +115,9 @@ int main ()
                 }
 
                 printf("Amount of cards player %d has: %d\n", i, (G.deckCount[i] + G.handCount[i]));
-                assert((G.handCount[i] + G.deckCount[i]) == 10);
+                assertTrue((G.handCount[i] + G.deckCount[i]), 10);
                 printf("Amount of cards player %d has in their hand: %d\n", i, G.handCount[i]);
-                assert(G.handCount[i] == 5);
+                assertTrue(G.handCount[i], 5);
             }
 
             else
@@ -103,14 +136,14 @@ int main ()
                 }
 
                 printf("Amount of cards player %d has: %d\n", i, G.deckCount[i]);
-                assert(G.deckCount[i] == 10);
+                assertTrue(G.deckCount[i], 10);
             }
             
             
             printf("Player %d's # of estate cards: %d\n", i, numEstates);
-            assert(numEstates == 3);
+            assertTrue(numEstates, 3);
             printf("Player %d's # of treasure cards: %d\n", i, numTreasure);
-            assert(numTreasure == 7);
+            assertTrue(numTreasure, 7);
         }
         
         memset(&G, '\0', sizeof(struct gameState));

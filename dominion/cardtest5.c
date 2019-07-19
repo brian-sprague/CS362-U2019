@@ -8,8 +8,20 @@
 #include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
-#include <assert.h>
 #include <time.h>
+
+void assertTrue(int val1, int val2)
+{
+    if (val1 == val2)
+    {
+        printf("TEST PASSES.\n");
+    }
+
+    else
+    {
+        printf("TEST FAILS.\n");
+    }
+}
 
 int main ()
 {
@@ -33,11 +45,11 @@ int main ()
     
     drawCard(0, &G);
     printf("Size of the player's hand: %d\n", G.handCount[0]);
-    assert(G.handCount[0] == 6);
+    assertTrue(G.handCount[0], 6);
     printf("Size of player's discard: %d\n", G.discardCount[0]);
-    assert(G.discardCount[0] == 0);
+    assertTrue(G.discardCount[0], 0);
     printf("Size of player's deck: %d\n", G.deckCount[0]);
-    assert(G.deckCount[0] == 4);
+    assertTrue(G.deckCount[0], 4);
 
     memset(&G, '\0', sizeof(struct gameState));
 
@@ -69,11 +81,11 @@ int main ()
     
     drawCard(0, &G);
     printf("Size of the player's hand: %d\n", G.handCount[0]);
-    assert(G.handCount[0] == 1);
+    assertTrue(G.handCount[0], 1);
     printf("Size of player's discard: %d\n", G.discardCount[0]);
-    assert(G.discardCount[0] == 0);
+    assertTrue(G.discardCount[0], 0);
     printf("Size of player's deck: %d\n", G.deckCount[0]);
-    assert(G.deckCount[0] == 9);
+    assertTrue(G.deckCount[0], 9);
 
     printf("*******************************\n");
     printf("TESTS COMPLETE.\n");

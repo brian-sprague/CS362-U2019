@@ -8,8 +8,20 @@
 #include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
-#include <assert.h>
 #include <time.h>
+
+void assertTrue(int val1, int val2)
+{
+    if (val1 == val2)
+    {
+        printf("TEST PASSES.\n");
+    }
+
+    else
+    {
+        printf("TEST FAILS.\n");
+    }
+}
 
 int main ()
 {
@@ -33,12 +45,12 @@ int main ()
         for (j = 0; j < i; j++)
         {
             printf("Current player: %d\n", G.whoseTurn + 1);
-            assert(G.whoseTurn == j);
+            assertTrue(G.whoseTurn, j);
             endTurn(&G);
         }
 
         printf("Final player: %d\n", G.whoseTurn + 1);
-        assert(G.whoseTurn == 0);
+        assertTrue(G.whoseTurn, 0);
 
         memset(&G, '\0', sizeof(struct gameState));
     }

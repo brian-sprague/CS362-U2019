@@ -8,8 +8,20 @@
 #include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
-#include <assert.h>
 #include <time.h>
+
+void assertTrue(int val1, int val2)
+{
+    if (val1 == val2)
+    {
+        printf("TEST PASSES.\n");
+    }
+
+    else
+    {
+        printf("TEST FAILS.\n");
+    }
+}
 
 int main ()
 {
@@ -87,24 +99,24 @@ int main ()
             {
                 printf("Size of player %d's hand was: %d\n", j, playersHandSize[j]);
                 printf("Size of player %d's hand is: %d\n", j, G.handCount[j]);
-                assert(G.handCount[j] == 4);
+                assertTrue(G.handCount[j], 4);
             }
 
             else if (j % 2 == 0)
             {
                 printf("Size of player %d's hand: %d -> %d\n", j, playersHandSize[j], G.handCount[j]);
-                assert(G.handCount[j] == playersHandSize[j]);
+                assertTrue(G.handCount[j], playersHandSize[j]);
                 for (h = 0; h < G.handCount[j]; h++)
                 {
                     printf("Expected: %d || Found: %d\n", playersCards[j][h], G.hand[j][h]);
-                    assert(playersCards[j][h] == G.hand[j][h]);
+                    assertTrue(playersCards[j][h], G.hand[j][h]);
                 }
             }
 
             else
             {
                 printf("Size of player %d's hand: %d -> %d\n", j, playersHandSize[j], G.handCount[j]);
-                assert(G.handCount[j] < playersHandSize[j]);
+                assertTrue(G.handCount[j], 4);
                 for (h = 0; h < G.handCount[j]; h++)
                 {
                     printf("Expected: %d || Found: %d\n", playersCards[j][h], G.hand[j][h]);

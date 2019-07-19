@@ -8,8 +8,20 @@
 #include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
-#include <assert.h>
 #include <time.h>
+
+void assertTrue(int val1, int val2)
+{
+    if (val1 == val2)
+    {
+        printf("TEST PASSES.\n");
+    }
+
+    else
+    {
+        printf("TEST FAILS.\n");
+    }
+}
 
 int main ()
 {
@@ -73,7 +85,7 @@ int main ()
                 if (k == 0)
                 {
                     printf("Size of player %d's hand: %d -> %d\n", k, playersHandSize[k], G.handCount[k]);
-                    assert(G.handCount[k] == (4 - j));
+                    assertTrue(G.handCount[k], (4 - j));
                     for (h = 0; h < G.handCount[k]; h++)
                     {
                         printf("Before: %d || After: %d\n", playersCards[k][h], G.hand[k][h]);
@@ -83,11 +95,11 @@ int main ()
                 else
                 {
                     printf("Size of player %d's discard: %d -> %d\n", k, playersHandSize[k], G.discardCount[k]);
-                    assert(G.discardCount[k] == 1);
+                    assertTrue(G.discardCount[k], 1);
                     for (h = 0; h < G.discardCount[k]; h++)
                     {
                         printf("Before: %d || After: %d\n", playersCards[k][h], G.discard[k][h]);
-                        assert(G.discard[k][h] == copper);
+                        assertTrue(G.discard[k][h], copper);
                     }
                 }
             }
