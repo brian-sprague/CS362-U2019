@@ -126,7 +126,7 @@ int main ()
             assertTrue(G.numActions, 3);
         }
 
-        else (i == 5)
+        else
         {
             printf("Size of player 1's discard: %d\n", G.discardCount[1]);
             assertTrue(G.discardCount[1], 0);
