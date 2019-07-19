@@ -63,8 +63,8 @@ int main ()
     printf("*******************************\n");
     printf("Player's hand where there was an estate: %d\n",  G.hand[G.whoseTurn][1]);
     assertTrue( G.hand[G.whoseTurn][1], -1);
-    printf("Number of estates in supply: %d\n",  G.supplyCount[estate]);
-    assertTrue( G.supplyCount[estate], numEstates + 1);
+    printf("Number of cards in discard: %d\n",  G.discardCount[0]);
+    assertTrue( G.discardCount[0], 2);
     printf("Player's numBuys: %d\n",  G.numBuys);
     assertTrue( G.numBuys, 2);
 

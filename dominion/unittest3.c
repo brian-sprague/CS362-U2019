@@ -85,7 +85,7 @@ int main ()
                 if (k == 0)
                 {
                     printf("Size of player %d's hand: %d -> %d\n", k, playersHandSize[k], G.handCount[k]);
-                    assertTrue(G.handCount[k], (4 - j));
+                    assertTrue(G.handCount[k], (2 - j));
                     for (h = 0; h < G.handCount[k]; h++)
                     {
                         printf("Before: %d || After: %d\n", playersCards[k][h], G.hand[k][h]);
