@@ -100,26 +100,37 @@ int main ()
 
         if (i == 0) // Play treasury card card
         {
-            printf("Size of player 1's deck: %d\n", G.deckCount[0]);
-            assertTrue(G.deckCount[0], 1);
+            printf("Size of player 1's discard: %d\n", G.discardCount[1]);
+            assertTrue(G.discardCount[1], 1);
         }
 
         else if ( i == 1 || i == 3) // Play victory card
         {
-            printf("Size of player 0's deck: %d\n", G.deckCount[0]);
-            assertTrue(G.deckCount[0], 3);
+            if (i == 1)
+            {
+                printf("Size of player 1's discard: %d\n", G.discardCount[1]);
+                assertTrue(G.discardCount[1], 1);
+            }
+            else
+            {
+                printf("Size of player 1's discard: %d\n", G.discardCount[1]);
+                assertTrue(G.discardCount[1], 2);
+            }
+
+            printf("Size of player 0's hand: %d\n", G.deckCount[0]);
+            assertTrue(G.deckCount[0], 1);
         }
 
         else if (i == 2 || i == 4)
         {
-            printf("Size of player 1's deck: %d\n", G.deckCount[1]);
+            printf("Size of player 1's discard: %d\n", G.discardCount[1]);
             if (i == 2)
             {
-                assertTrue(G.deckCount[1], 1);
+                assertTrue(G.discardCount[1], 1);
             }
             else
             {
-                assertTrue(G.deckCount[1], 2);
+                assertTrue(G.discardCount[1], 2);
             }
 
             printf("Number of actions for player 0: %d\n", G.numActions);
