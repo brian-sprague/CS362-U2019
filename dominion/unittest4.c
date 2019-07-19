@@ -117,8 +117,8 @@ int main ()
                 assertTrue(G.discardCount[1], 2);
             }
 
-            printf("Size of player 0's hand: %d\n", G.deckCount[0]);
-            assertTrue(G.deckCount[0], 1);
+            printf("Size of player 0's hand: %d\n", G.handCount[0]);
+            assertTrue(G.handCount[0], 2);
         }
 
         else if (i == 2 || i == 4)
