@@ -31,6 +31,7 @@ int main ()
                  remodel, smithy, village, baron, great_hall};
     struct gameState G;
     int seed = time(0);
+    int numEstates;
 
     memset(&G, 23, sizeof(struct gameState));
 
@@ -52,7 +53,7 @@ int main ()
     G.hand[G.whoseTurn][0] = baron;
     G.hand[G.whoseTurn][1] = estate;
     G.handCount[G.whoseTurn] = 2;
-    G.coins = 0;
+    numEstates = G.supplyCount[estate];
 
     // Play the baron card
     playCard(0, 1, -1, -1, &G);
@@ -60,8 +61,10 @@ int main ()
     printf("*******************************\n");
     printf("TEST 1: Player discards an estate.\n");
     printf("*******************************\n");
-    printf("Player's discard where there should be an estate: %d\n",  G.hand[G.whoseTurn][1]);
+    printf("Player's hand where there was an estate: %d\n",  G.hand[G.whoseTurn][1]);
     assertTrue( G.hand[G.whoseTurn][1], -1);
+    printf("Number of estates in supply: %d\n",  G.supplyCount[estate]);
+    assertTrue( G.supplyCount[estate], numEstates + 1);
     printf("Player's numBuys: %d\n",  G.numBuys);
     assertTrue( G.numBuys, 2);
 
@@ -82,7 +85,7 @@ int main ()
     }
     G.hand[G.whoseTurn][0] = baron;
     G.handCount[G.whoseTurn] = 1;
-    G.coins = 0;
+    numEstates = G.supplyCount[estate];
 
     // Play the baron card
     playCard(0, 0, -1, -1, &G);
@@ -94,6 +97,8 @@ int main ()
     assertTrue( G.discardCount[G.whoseTurn], 1);
     printf("Player's discard where there should be an estate: %d\n", G.discard[G.whoseTurn][G.discardCount[G.whoseTurn] - 1]);
     assertTrue( G.discard[G.whoseTurn][G.discardCount[G.whoseTurn] - 1], estate);
+    printf("Number of estates in supply: %d\n",  G.supplyCount[estate]);
+    assertTrue( G.supplyCount[estate], numEstates);
     printf("Player's numBuys: %d\n",  G.numBuys);
     assertTrue( G.numBuys, 2);
 
@@ -116,7 +121,7 @@ int main ()
     }
     G.hand[G.whoseTurn][0] = baron;
     G.handCount[G.whoseTurn] = 1;
-    G.coins = 0;
+    numEstates = G.supplyCount[estate];
 
     // Play the baron card
     playCard(0, 1, -1, -1, &G);
@@ -128,6 +133,8 @@ int main ()
     assertTrue( G.discardCount[G.whoseTurn], 1);
     printf("Player's discard where there should be an estate: %d\n",  G.discard[G.whoseTurn][G.discardCount[G.whoseTurn] - 1]);
     assertTrue( G.discard[G.whoseTurn][G.discardCount[G.whoseTurn] - 1], estate);
+    printf("Number of estates in supply: %d\n",  G.supplyCount[estate]);
+    assertTrue( G.supplyCount[estate], numEstates);
     printf("Player's numBuys: %d\n",  G.numBuys);
     assertTrue( G.numBuys, 2);
 

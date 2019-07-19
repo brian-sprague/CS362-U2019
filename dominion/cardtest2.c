@@ -12,7 +12,7 @@
 
 void assertTrue(int val1, int val2)
 {
-    if (val1 == val2)
+    if (val1 < val2)
     {
         printf("TEST PASSES.\n");
     }
