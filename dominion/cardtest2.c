@@ -48,7 +48,7 @@ int main ()
         for (j = 0; j < 20; j++)
         {
             G.deck[0][k] = i;
-            G.deckCount++;
+            G.deckCount[0]++;
             refDeck[k] = i;
             k++;
         }
