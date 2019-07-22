@@ -95,12 +95,12 @@ int main ()
         playCard(0, 0, 0, 0, &G);
 
         printf("*******************************\n");
-        printf("TEST: %d\n", i);
+        printf("TEST: %d\n", i + 1);
         printf("*******************************\n");
 
         if (i == 0) // Play treasury card card
         {
-            printf("Size of player 1's discard: %d\n", G.discardCount[1]);
+            printf("Size of player 2's discard: %d\n", G.discardCount[1]);
             assertTrue(G.discardCount[1], 1);
         }
 
@@ -108,22 +108,22 @@ int main ()
         {
             if (i == 1)
             {
-                printf("Size of player 1's discard: %d\n", G.discardCount[1]);
+                printf("Size of player 2's discard: %d\n", G.discardCount[1]);
                 assertTrue(G.discardCount[1], 1);
             }
             else
             {
-                printf("Size of player 1's discard: %d\n", G.discardCount[1]);
+                printf("Size of player 2's discard: %d\n", G.discardCount[1]);
                 assertTrue(G.discardCount[1], 2);
             }
 
-            printf("Size of player 0's hand: %d\n", G.handCount[0]);
+            printf("Size of player 1's hand: %d\n", G.handCount[0]);
             assertTrue(G.handCount[0], 2);
         }
 
         else if (i == 2 || i == 4)
         {
-            printf("Size of player 1's discard: %d\n", G.discardCount[1]);
+            printf("Size of player 2's discard: %d\n", G.discardCount[1]);
             if (i == 2)
             {
                 assertTrue(G.discardCount[1], 1);
@@ -133,13 +133,13 @@ int main ()
                 assertTrue(G.discardCount[1], 2);
             }
 
-            printf("Number of actions for player 0: %d\n", G.numActions);
+            printf("Number of actions for player 1: %d\n", G.numActions);
             assertTrue(G.numActions, 3);
         }
 
         else
         {
-            printf("Size of player 1's discard: %d\n", G.discardCount[1]);
+            printf("Size of player 2's discard: %d\n", G.discardCount[1]);
             assertTrue(G.discardCount[1], 1);
         }
         
