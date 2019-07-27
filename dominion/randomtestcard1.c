@@ -159,15 +159,12 @@ int main ()
 
         // init a new game
         initializeGame(numPlayer, k, seed, &postGame);
-        printf("Called initializeGame.\n");
 
         // Add baron card to the player's hand at index 0
         postGame.hand[postGame.whoseTurn][0] = baron;
-        printf("Added baron card.\n");
 
         //Copy contents of postGame to pregame
         memcpy(&preGame, &postGame, sizeof(struct gameState));
-        printf("Called memcpy.\n");
 
         result = rand() % 20;
         printf("Result is: %f", result);
