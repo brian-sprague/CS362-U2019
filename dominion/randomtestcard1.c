@@ -138,7 +138,7 @@ int main ()
         printf("TEST %d:\n", i + 1);
         printf("*******************************\n");
 
-        numPlayer = floor(Random() * MAX_PLAYERS);
+        numPlayer = floor(Random() * 255);
         if (numPlayer < 85)
         {
             numPlayer = 2;
@@ -168,8 +168,8 @@ int main ()
         memcpy(&preGame, &postGame, sizeof(struct gameState));
         printf("Called memcpy.\n");
 
-        choice = floor(Random() * 2);
-        if (choice >= 1)
+        choice = floor(Random() * 20);
+        if (choice >= 10)
         {
             choice = 1;
         }
