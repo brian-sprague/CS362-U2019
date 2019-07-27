@@ -163,6 +163,9 @@ int main ()
         // Add baron card to the player's hand at index 0
         postGame.hand[postGame.whoseTurn][0] = baron;
 
+        // Set various amounts of estate cards in the supply
+        postGame.supplyCount[estate] = rand() % 13
+
         //Copy contents of postGame to pregame
         memcpy(&preGame, &postGame, sizeof(struct gameState));
 
