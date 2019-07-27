@@ -134,89 +134,97 @@ int main ()
 
     for (i = 0; i < NUM_TESTS; i++)
     {
-        numPlayer = floor(Random() * MAX_PLAYERS);
-        printf("Number of players: %d\n", numPlayer);
-
-        // init a new game
-        initializeGame(numPlayer, k, seed, &postGame);
-        printf("Called initializeGame.\n");
-
-        // Add baron card to the player's hand at index 0
-        postGame.hand[postGame.whoseTurn][0] = baron;
-        printf("Added baron card.\n");
-
-        //Copy contents of postGame to pregame
-        memcpy(&preGame, &postGame, sizeof(struct gameState));
-        printf("Called memcpy.\n");
-
-        choice = floor(Random() * 2);
-        if (choice >= 1)
-        {
-            choice = 1;
-        }
-
-        else
-        {
-            choice = 0;
-        }
-
-        printf("Player's choice: %d\n", choice);
-        
-
-        // Play the baron card
-        playCard(0, choice, -1, -1, &postGame);
-
-        // Find if there are any estate cards in the player's hand
-        for (j = 0; j < preGame.handCount[preGame.whoseTurn]; j++)
-        {
-            if (preGame.hand[preGame.whoseTurn][j] == estate)
-            {
-                hasEstate = 1;
-            }
-        }
-
         printf("*******************************\n");
         printf("TEST %d:\n", i + 1);
         printf("*******************************\n");
 
-        // Player chooses to gain an estate
-        if (choice == 0)
-        {
-            printf("Estate supplyCount test: ");
-            assertTrue(2, preGame.supplyCount[estate], postGame.supplyCount[estate]);
-            printf("Player's discardCount test: ");
-            assertTrue(-2, preGame.discardCount[postGame.whoseTurn], postGame.discardCount[postGame.whoseTurn]);
-            printf("Player's handCount test: ");
-            assertTrue(0, preGame.handCount[postGame.whoseTurn], (postGame.handCount[postGame.whoseTurn] + 1));
-        }
+        numPlayer = floor(Random() * MAX_PLAYERS);
+        printf("Number of players: %d\n", numPlayer);
 
-        // Player chooses to discard estate but doesn't have one
-        else if (choice == 1 && hasEstate == 0)
+        if (numPlayer < 2 || numPlayer > MAX_PLAYERS)
         {
-            printf("Estate supplyCount test: ");
-            assertTrue(2, preGame.supplyCount[estate], postGame.supplyCount[estate]);
-            printf("Player's discardCount test: ");
-            assertTrue(-2, preGame.discardCount[postGame.whoseTurn], postGame.discardCount[postGame.whoseTurn]);
-            printf("Player's handCount test: ");
-            assertTrue(0, preGame.handCount[postGame.whoseTurn], (postGame.handCount[postGame.whoseTurn] + 1));
+            continue;
         }
-
-        // Player chooses to discard estate and has one
-        else if(choice == 1 && hasEstate == 1)
+        else
         {
-            printf("Estate supplyCount test: ");
-            assertTrue(2, preGame.supplyCount[estate], postGame.supplyCount[estate]);
-            printf("Player's discardCount test: ");
-            assertTrue(-2, preGame.discardCount[postGame.whoseTurn], postGame.discardCount[postGame.whoseTurn]);
-            printf("Player's handCount test: ");
-            assertTrue(0, preGame.handCount[postGame.whoseTurn], (postGame.handCount[postGame.whoseTurn] + 2));
-        }
-        printf("Player's numBuys test: ");
-        assertTrue(-2, preGame.numBuys, postGame.numBuys);
 
-        // Clear out the contents of the gameStates
-        memset(&preGame, '\0', sizeof(struct gameState));
-        memset(&postGame, '\0', sizeof(struct gameState));
+            // init a new game
+            initializeGame(numPlayer, k, seed, &postGame);
+            printf("Called initializeGame.\n");
+
+            // Add baron card to the player's hand at index 0
+            postGame.hand[postGame.whoseTurn][0] = baron;
+            printf("Added baron card.\n");
+
+            //Copy contents of postGame to pregame
+            memcpy(&preGame, &postGame, sizeof(struct gameState));
+            printf("Called memcpy.\n");
+
+            choice = floor(Random() * 2);
+            if (choice >= 1)
+            {
+                choice = 1;
+            }
+
+            else
+            {
+                choice = 0;
+            }
+
+            printf("Player's choice: %d\n", choice);
+            
+
+            // Play the baron card
+            playCard(0, choice, -1, -1, &postGame);
+
+            // Find if there are any estate cards in the player's hand
+            for (j = 0; j < preGame.handCount[preGame.whoseTurn]; j++)
+            {
+                if (preGame.hand[preGame.whoseTurn][j] == estate)
+                {
+                    hasEstate = 1;
+                }
+            }
+
+            // Player chooses to gain an estate
+            if (choice == 0)
+            {
+                printf("Estate supplyCount test: ");
+                assertTrue(2, preGame.supplyCount[estate], postGame.supplyCount[estate]);
+                printf("Player's discardCount test: ");
+                assertTrue(-2, preGame.discardCount[postGame.whoseTurn], postGame.discardCount[postGame.whoseTurn]);
+                printf("Player's handCount test: ");
+                assertTrue(0, preGame.handCount[postGame.whoseTurn], (postGame.handCount[postGame.whoseTurn] + 1));
+            }
+
+            // Player chooses to discard estate but doesn't have one
+            else if (choice == 1 && hasEstate == 0)
+            {
+                printf("Estate supplyCount test: ");
+                assertTrue(2, preGame.supplyCount[estate], postGame.supplyCount[estate]);
+                printf("Player's discardCount test: ");
+                assertTrue(-2, preGame.discardCount[postGame.whoseTurn], postGame.discardCount[postGame.whoseTurn]);
+                printf("Player's handCount test: ");
+                assertTrue(0, preGame.handCount[postGame.whoseTurn], (postGame.handCount[postGame.whoseTurn] + 1));
+            }
+
+            // Player chooses to discard estate and has one
+            else if(choice == 1 && hasEstate == 1)
+            {
+                printf("Estate supplyCount test: ");
+                assertTrue(2, preGame.supplyCount[estate], postGame.supplyCount[estate]);
+                printf("Player's discardCount test: ");
+                assertTrue(-2, preGame.discardCount[postGame.whoseTurn], postGame.discardCount[postGame.whoseTurn]);
+                printf("Player's handCount test: ");
+                assertTrue(0, preGame.handCount[postGame.whoseTurn], (postGame.handCount[postGame.whoseTurn] + 2));
+            }
+            printf("Player's numBuys test: ");
+            assertTrue(-2, preGame.numBuys, postGame.numBuys);
+
+            // Clear out the contents of the gameStates
+            memset(&preGame, '\0', sizeof(struct gameState));
+            memset(&postGame, '\0', sizeof(struct gameState));
+        }
     }
 
     printf("*******************************\n");
