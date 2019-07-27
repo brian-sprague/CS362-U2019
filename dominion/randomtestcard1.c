@@ -121,10 +121,9 @@ int main ()
     int choice;
     int hasEstate;
 
+    srand(time(0));
     memset(&preGame, 23, sizeof(struct gameState));
     memset(&postGame, 23, sizeof(struct gameState));
-    SelectStream(2);
-    PutSeed(4);
 
     /***************************
      * Player sells an estate
@@ -139,7 +138,7 @@ int main ()
         printf("TEST %d:\n", i + 1);
         printf("*******************************\n");
 
-        result = floor(Random() * 255);
+        result = rand() % 255;
         printf("Result is: %f", result);
         if (result < 85)
         {
@@ -170,7 +169,7 @@ int main ()
         memcpy(&preGame, &postGame, sizeof(struct gameState));
         printf("Called memcpy.\n");
 
-        result = floor(Random() * 20);
+        result = rand() % 20;
         printf("Result is: %f", result);
         if (result >= 10)
         {
