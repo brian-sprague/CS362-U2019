@@ -112,6 +112,7 @@ int assertTrue(int opt, int val1, int val2)
 int main ()
 {
     int i, j;
+    double result;
     int numPlayer;
     int k[10] = {adventurer, council_room, feast, gardens, mine,
                  remodel, smithy, village, baron, great_hall};
@@ -138,13 +139,14 @@ int main ()
         printf("TEST %d:\n", i + 1);
         printf("*******************************\n");
 
-        numPlayer = floor(Random() * 255);
-        if (numPlayer < 85)
+        result = floor(Random() * 255);
+        printf("Result is: %f", result);
+        if (result < 85)
         {
             numPlayer = 2;
         }
 
-        else if (numPlayer <= 85 && numPlayer < 172)
+        else if (result <= 85 && result < 172)
         {
             numPlayer = 3;
         }
@@ -168,8 +170,9 @@ int main ()
         memcpy(&preGame, &postGame, sizeof(struct gameState));
         printf("Called memcpy.\n");
 
-        choice = floor(Random() * 20);
-        if (choice >= 10)
+        result = floor(Random() * 20);
+        printf("Result is: %f", result);
+        if (result >= 10)
         {
             choice = 1;
         }
