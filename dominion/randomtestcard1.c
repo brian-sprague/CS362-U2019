@@ -120,8 +120,8 @@ int main ()
     int choice;
     int hasEstate;
 
-    memset(&preGame, '\0', sizeof(struct gameState));
-    memset(&postGame, '\0', sizeof(struct gameState));
+    memset(&preGame, 23, sizeof(struct gameState));
+    memset(&postGame, 23, sizeof(struct gameState));
     SelectStream(2);
     PutSeed(3);
 
@@ -135,6 +135,7 @@ int main ()
     for (i = 0; i < NUM_TESTS; i++)
     {
         numPlayer = floor(Random() * MAX_PLAYERS);
+        printf("Number of players: %d\n", numPlayer);
 
         // init a new game
         initializeGame(numPlayer, k, seed, &postGame);
@@ -155,6 +156,8 @@ int main ()
         {
             choice = 0;
         }
+
+        printf("Player's choice: %d\n", choice);
         
 
         // Play the baron card
