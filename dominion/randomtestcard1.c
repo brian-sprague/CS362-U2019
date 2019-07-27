@@ -9,7 +9,9 @@
 #include "rngs.h"
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
+#include <math.h>
 
 int NUM_TESTS = 20000;
 
@@ -141,7 +143,7 @@ int main ()
         postGame.hand[postGame.whoseTurn][0] = baron;
 
         //Copy contents of postGame to pregame
-        memcpy(&preGame, postGame, sizeof(struct gameState));
+        memcpy(&preGame, &postGame, sizeof(struct gameState));
 
         choice = floor(Random() * 2);
         if (choice >= 1)
