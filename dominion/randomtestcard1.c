@@ -13,7 +13,7 @@
 #include <time.h>
 #include <math.h>
 
-int NUM_TESTS = 20000000;
+int NUM_TESTS = 2000000;
 
 /***********************
  * asserTrue
@@ -164,7 +164,7 @@ int main ()
         postGame.hand[postGame.whoseTurn][0] = baron;
 
         // Set various amounts of estate cards in the supply
-        postGame.supplyCount[estate] = rand() % 13;
+        postGame.supplyCount[estate] = (rand() % 13) - 1;
 
         //Copy contents of postGame to pregame
         memcpy(&preGame, &postGame, sizeof(struct gameState));
