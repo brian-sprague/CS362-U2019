@@ -124,7 +124,7 @@ int main ()
     memset(&preGame, 23, sizeof(struct gameState));
     memset(&postGame, 23, sizeof(struct gameState));
     SelectStream(2);
-    PutSeed(3);
+    PutSeed(4);
 
     /***************************
      * Player sells an estate
