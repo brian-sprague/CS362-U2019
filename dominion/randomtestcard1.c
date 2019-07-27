@@ -13,7 +13,7 @@
 #include <time.h>
 #include <math.h>
 
-int NUM_TESTS = 200000;
+int NUM_TESTS = 2000000;
 
 /***********************
  * asserTrue
