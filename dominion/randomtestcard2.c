@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#include <limits.h>
 
 int NUM_TESTS = 2000000;
 
@@ -160,30 +161,30 @@ int main ()
         //Copy contents of postGame to pregame
         memcpy(&preGame, &postGame, sizeof(struct gameState));
 
-        // Set choice1 to either 1 or 0
+        // Set choice1 to either positive or negative
         result = rand() % 20;
         printf("Result is: %f", result);
         if (result >= 10)
         {
-            choice1 = 1;
+            choice1 = rand() % INT_MIN;
         }
 
         else
         {
-            choice1 = 0;
+            choice1 = rand() % INT_MAX;
         }
 
-        // Set choice1 to either 1 or 0
+        // Set choice1 to either positive or negative
         result = rand() % 20;
         printf("Result is: %f", result);
         if (result >= 10)
         {
-            choice2 = 1;
+            choice2 = rand() % INT_MIN;
         }
 
         else
         {
-            choice2 = 0;
+            choice2 = rand() % INT_MAX;
         }
 
         // Play minion card
