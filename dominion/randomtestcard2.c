@@ -161,7 +161,7 @@ int main ()
         memcpy(&preGame, &postGame, sizeof(struct gameState));
 
         // Set choice1 to either positive or negative
-        choice1 = rand() % 30000;
+        choice1 = rand() % 15000;
         printf("choice1 is: %d", choice1);
         // if (result >= 10)
         // {
@@ -174,7 +174,7 @@ int main ()
         // }
 
         // Set choice1 to either positive or negative
-        choice2 = rand() % 30000;
+        choice2 = rand() % 15000;
         printf("choice2 is: %d", choice2);
         // if (result >= 10)
         // {
