@@ -6,11 +6,13 @@
 
 #include "dominion.h"
 #include "dominion_helpers.h"
+#include "rngs.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#include <limits.h>
 
 int NUM_TESTS = 200000;
 
@@ -109,6 +111,9 @@ int main ()
     int choice1, choice2;
     int result;
 
+    SelectStream(2);
+    PutSeed(3);
+
     srand(time(0));
     memset(&preGame, 23, sizeof(struct gameState));
     memset(&postGame, 23, sizeof(struct gameState));
@@ -161,30 +166,36 @@ int main ()
         memcpy(&preGame, &postGame, sizeof(struct gameState));
 
         // Set choice1 to either positive or negative
-        result = rand() % 20;
-        printf("result is: %d\n", choice1);
-        if (result >= 10)
-        {
-            choice1 = 1;
-        }
+        // result = rand() % 20;
+        // printf("result is: %d\n", choice1);
+        // if (result >= 10)
+        // {
+        //     choice1 = 1;
+        // }
 
-        else
-        {
-            choice1 = 0;
-        }
+        // else
+        // {
+        //     choice1 = 0;
+        // }
 
-        // Set choice1 to either positive or negative
-        result = rand() % 20;
-        printf("result is: %d\n", choice2);
-        if (result >= 10)
-        {
-            choice2 = 1;
-        }
+        choice1 = floor(Random() * INT_MAX);
+        printf("Choice1: %d", choice1);
 
-        else
-        {
-            choice2 = 0;
-        }
+        // // Set choice1 to either positive or negative
+        // result = rand() % 20;
+        // printf("result is: %d\n", choice2);
+        // if (result >= 10)
+        // {
+        //     choice2 = 1;
+        // }
+
+        // else
+        // {
+        //     choice2 = 0;
+        // }
+
+        choice2 = floor(Random() * INT_MAX);
+        printf("Choice2: %d", choice2);
 
         // Play minion card
         playCard(0, choice1, choice2, 0, &postGame);
