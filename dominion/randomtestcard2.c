@@ -12,7 +12,7 @@
 #include <time.h>
 #include <math.h>
 
-int NUM_TESTS = 2000000;
+int NUM_TESTS = 200000;
 
 int assertTrue(int opt, int val1, int val2)
 {
@@ -162,7 +162,7 @@ int main ()
 
         // Set choice1 to either positive or negative
         choice1 = rand() % 15000;
-        printf("choice1 is: %d", choice1);
+        printf("choice1 is: %d\n", choice1);
         // if (result >= 10)
         // {
         //     choice1 = 1;
@@ -175,7 +175,7 @@ int main ()
 
         // Set choice1 to either positive or negative
         choice2 = rand() % 15000;
-        printf("choice2 is: %d", choice2);
+        printf("choice2 is: %d\n", choice2);
         // if (result >= 10)
         // {
         //     choice2 = 1;
