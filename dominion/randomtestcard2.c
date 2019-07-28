@@ -164,7 +164,7 @@ int main ()
         // Set choice1 to either positive or negative
         choice1 = rand() % INT_MAX;
         // result = rand() % 20;
-        // printf("Result is: %f", result);
+        printf("Result is: %f", choice1);
         // if (result >= 10)
         // {
         //     choice1 = rand() % INT_MIN;
@@ -178,7 +178,7 @@ int main ()
         // Set choice1 to either positive or negative
         choice2 = rand() % INT_MAX;
         // result = rand() % 20;
-        // printf("Result is: %f", result);
+        printf("Result is: %f", choice2);
         // if (result >= 10)
         // {
         //     choice2 = rand() % INT_MIN;
