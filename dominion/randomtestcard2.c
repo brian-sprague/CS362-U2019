@@ -10,16 +10,89 @@
 #include <stdio.h>
 #include <time.h>
 
-void assertTrue(int val1, int val2)
+int NUM_TESTS = 2000000;
+
+int assertTrue(int opt, int val1, int val2)
 {
-    if (val1 == val2)
+    if (opt == -2)
     {
-        printf("TEST PASSES.\n");
+        if (val1 < val2)
+        {
+            printf("TEST PASSES.\n");
+            return 1;
+        }
+
+        else
+        {
+            printf("TEST FAILS.\n");
+            return 0;
+        }
+    }
+
+    else if(opt == -1)
+    {
+        if (val1 <= val2)
+        {
+            printf("TEST PASSES.\n");
+            return 1;
+        }
+
+        else
+        {
+            printf("TEST FAILS.\n");
+            return 0;
+        }
+    }
+
+    else if(opt == 0)
+    {
+        if (val1 == val2)
+        {
+            printf("TEST PASSES.\n");
+            return 1;
+        }
+
+        else
+        {
+            printf("TEST FAILS.\n");
+            return 0;
+        }
+    }
+
+    else if(opt == 1)
+    {
+        if (val1 >= val2)
+        {
+            printf("TEST PASSES.\n");
+            return 1;
+        }
+
+        else
+        {
+            printf("TEST FAILS.\n");
+            return 0;
+        }
+    }
+
+    else if(opt == 2)
+    {
+        if (val1 > val2)
+        {
+            printf("TEST PASSES.\n");
+            return 1;
+        }
+
+        else
+        {
+            printf("TEST FAILS.\n");
+            return 0;
+        }
     }
 
     else
     {
-        printf("TEST FAILS.\n");
+        printf("Invalid value entered for opt. Please change.\n");
+        exit(1);
     }
 }
 
@@ -28,104 +101,146 @@ int main ()
     int i, j, h;
     int k[10] = {adventurer, council_room, feast, gardens, mine,
                  remodel, smithy, village, baron, great_hall};
-    struct gameState G;
+    struct gameState preGame, postGame;
     int seed = time(0);
-    int playersCards[MAX_PLAYERS][MAX_HAND];
-    int playersHandSize[MAX_PLAYERS];
+    int numPlayer, numCards;
+    int result, choice1, choice2;
+
+    srand(time(0));
+    memset(&preGame, 23, sizeof(struct gameState));
+    memset(&postGame, 23, sizeof(struct gameState));
 
     printf("*******************************\n");
-    printf("unittest2.c TESTS - Minion\n");
+    printf("randomtestcard2.c TESTS - Minion\n");
     printf("*******************************\n");
 
     // Run test for all configurations of players
-    for (i = 2; i <= MAX_PLAYERS; i++)
+    for (i = 0; i < NUM_TESTS; i++)
     {
         printf("*******************************\n");
-        printf("TEST %d\n", (i - 1));
+        printf("TEST %d\n", i + 1);
         printf("*******************************\n");
-        // init a new game
-        initializeGame(i, k, seed, &G);
 
-        // Save the player's hand and handsize
-        for (j = 0; j < G.handCount[0]; j++)
+        result = rand() % 255;
+        printf("Result is: %f", result);
+        if (result < 85)
         {
-            playersCards[0][j] = G.hand[0][j];
+            numPlayer = 2;
         }
-        playersHandSize[0] = G.handCount[0];
 
-        G.hand[0][0] = minion;
-
-        // Call drawCards x5 for all other players until they have 5
-        for (j = 1; j < i; j++)
+        else if (result <= 85 && result < 172)
         {
-            // Give even mnumbered players 4 cards
-            if (j % 2 == 0)
-            {
-                for (h = 0; h < 4; h++)
-                {
-                    drawCard(j, &G);
-                }
-            }
+            numPlayer = 3;
+        }
 
-            // Give everyone else 5 cards
-            else
+        else
+        {
+            numPlayer = MAX_PLAYERS;
+        }
+
+        // init a new game
+        initializeGame(numPlayer, k, seed, &postGame);
+
+        // Call drawCard a random amount of times between 0 and 9
+        for (j = 1; j < postGame.numPlayers; j++)
+        {
+            numCards = rand() % 10;
+            for (h = 0; h < numCards; h++)
             {
-                for (h = 0; h < 5; h++)
-                {
-                    drawCard(j, &G);
-                }
+                drawCard(j, &postGame);
             }
-            
-            // Save the player's hand and handsize
-            for (h = 0; h < G.handCount[0]; h++)
-            {
-                playersCards[j][h] = G.hand[j][h];
-            }
-            playersHandSize[j] = G.handCount[j];
+        }
+
+        // Add baron card to the player's hand at index 0
+        postGame.hand[postGame.whoseTurn][0] = minion;
+
+        //Copy contents of postGame to pregame
+        memcpy(&preGame, &postGame, sizeof(struct gameState));
+
+        // Set choice1 to either 1 or 0
+        result = rand() % 20;
+        printf("Result is: %f", result);
+        if (result >= 10)
+        {
+            choice1 = 1;
+        }
+
+        else
+        {
+            choice1 = 0;
+        }
+
+        // Set choice1 to either 1 or 0
+        result = rand() % 20;
+        printf("Result is: %f", result);
+        if (result >= 10)
+        {
+            choice2 = 1;
+        }
+
+        else
+        {
+            choice2 = 0;
         }
 
         // Play minion card
-        playCard(0, 0, 1, 0, &G);
+        playCard(0, choice1, choice2, 0, &G);
 
-        // Check the player's hands
-        for (j = 0; j < i; j++)
+        
+        
+
+        // Player chooses to gain coins
+        if (choice1 == 1 || (choice1 == 0 && choice2 == 0))
         {
-            printf("-------------------------------\n");
-            printf("PLAYER %d\n", j);
-            printf("-------------------------------\n");
-
-            // check starting player's hand
-            if (j == 0)
+            printf("Player 1's discardCount test: ");
+            assertTrue(0, preGame.discardCount[postGame.whoseTurn], postGame.discardCount[postGame.whoseTurn] - 1);
+            printf("Player 1's handCount test: ");
+            assertTrue(0, preGame.handCount[postGame.whoseTurn], (postGame.handCount[postGame.whoseTurn] + 1) + 1);
+            
+            for (j = 1; j < postGame.numPlayers; j++)
             {
-                printf("Size of player %d's hand was: %d\n", j, playersHandSize[j]);
-                printf("Size of player %d's hand is: %d\n", j, G.handCount[j]);
-                assertTrue(G.handCount[j], 4);
-            }
-
-            else if (j % 2 == 0)
-            {
-                printf("Size of player %d's hand: %d -> %d\n", j, playersHandSize[j], G.handCount[j]);
-                assertTrue(G.handCount[j], playersHandSize[j]);
-                for (h = 0; h < G.handCount[j]; h++)
-                {
-                    printf("Expected: %d || Found: %d\n", playersCards[j][h], G.hand[j][h]);
-                    assertTrue(playersCards[j][h], G.hand[j][h]);
-                }
-            }
-
-            else
-            {
-                printf("Size of player %d's hand: %d -> %d\n", j, playersHandSize[j], G.handCount[j]);
-                assertTrue(G.handCount[j], 4);
-                for (h = 0; h < G.handCount[j]; h++)
-                {
-                    printf("Expected: %d || Found: %d\n", playersCards[j][h], G.hand[j][h]);
-                }
+                printf("Player %d's discardCount test: ", j + 1);
+                assertTrue(0, preGame.discardCount[j], postGame.discardCount[j]);
+                printf("Player %d's handCount test: ", j + 1);
+                assertTrue(0, preGame.handCount[j], postGame.handCount[j]);              
             }
         }
 
-        // Clear out the contents of gameState
-        memset(&G, '\0', sizeof(struct gameState));
+        // Player chooses to discard hand and force all other players
+        // with 5 or more cards to discard their hands
+        else if (choice2 == 1)
+        {
+            printf("Player 1's discardCount test: ");
+            assertTrue(0, postGame.discardCount[postGame.whoseTurn], preGame.discardCount[postGame.whoseTurn] + preGame.handCount[postGame.whoseTurn]);
+            printf("Player 1's handCount test: ");
+            assertTrue(0, postGame.handCount[postGame.whoseTurn], 4);
+
+            for (j = 1; j < postGame.numPlayers; j++)
+            {
+                if (preGame.handCount[j] >= 5)
+                {
+                    printf("Player %d's discardCount test: ", j + 1);
+                    assertTrue(0, preGame.discardCount[j], postGame.discardCount[j] - preGame.handCount[j]);
+                    printf("Player %d's handCount test: ", j + 1);
+                    assertTrue(0, postGame.handCount[j], 4);
+                }
+
+                else
+                {
+                    printf("Player %d's discardCount test: ", j + 1);
+                    assertTrue(0, preGame.discardCount[j], postGame.discardCount[j]);
+                    printf("Player %d's handCount test: ", j + 1);
+                    assertTrue(0, preGame.handCount[j], postGame.handCount[j]);
+                }                
+            }
+        }
+
+        printf("Player 1's numActions test: ");
+        assertTrue(0, preGame.numActions, postGame.numActions - 1);
+
+        // Clear out the contents of the gameStates
+        memset(&preGame, '\0', sizeof(struct gameState));
+        memset(&postGame, '\0', sizeof(struct gameState));
     }
 
     printf("*******************************\n");
