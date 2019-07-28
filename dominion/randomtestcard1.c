@@ -213,7 +213,7 @@ int main ()
         }
 
         // Player chooses to discard estate but doesn't have one
-        else if (choice == 1 && hasEstate == 0)
+        else if (hasEstate == 0)
         {
             printf("Estate supplyCount test: ");
             assertTrue(2, preGame.supplyCount[estate], postGame.supplyCount[estate]);
@@ -224,10 +224,10 @@ int main ()
         }
 
         // Player chooses to discard estate and has one
-        else if(choice == 1 && hasEstate == 1)
+        else if(hasEstate == 1)
         {
             printf("Estate supplyCount test: ");
-            assertTrue(2, preGame.supplyCount[estate], postGame.supplyCount[estate]);
+            assertTrue(0, preGame.supplyCount[estate], postGame.supplyCount[estate]);
             printf("Player's discardCount test: ");
             assertTrue(-2, preGame.discardCount[postGame.whoseTurn], postGame.discardCount[postGame.whoseTurn]);
             printf("Player's handCount test: ");

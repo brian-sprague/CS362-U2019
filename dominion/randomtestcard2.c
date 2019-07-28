@@ -14,7 +14,7 @@
 #include <math.h>
 #include <limits.h>
 
-int NUM_TESTS = 200000;
+int NUM_TESTS = 2000000;
 
 int assertTrue(int opt, int val1, int val2)
 {
@@ -162,7 +162,7 @@ int main ()
         //Copy contents of postGame to pregame
         memcpy(&preGame, &postGame, sizeof(struct gameState));
 
-        Set choice1 to either positive or negative
+        //Set choice1 to either 1 or 0
         result = rand() % 20;
         printf("result is: %d\n", choice1);
         if (result >= 10)
@@ -175,7 +175,7 @@ int main ()
             choice1 = 0;
         }
 
-        // Set choice1 to either positive or negative
+        // Set choice1 to either 1 or 0
         result = rand() % 20;
         printf("result is: %d\n", choice2);
         if (result >= 10)

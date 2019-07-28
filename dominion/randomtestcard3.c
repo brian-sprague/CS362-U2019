@@ -132,10 +132,15 @@ int main ()
 
         }
 
-        numDrawCards = rand() % MAX_HAND;
+        // Add cards to hand and then to discard for opposing player
+        numDrawCards = rand() % MAX_HAND - 5;
         for (j = 0; j < numDrawCards; j++)
         {
             drawCard(1, &postGame);
+            postGame.discard[1][j] = postGame.hand[1][0];
+            postGame.hand[1][0] = -1;
+            postGame.discardCount[1]++;
+            postGame.handCount[1]--;
         }
 
         //Copy contents of postGame to pregame
