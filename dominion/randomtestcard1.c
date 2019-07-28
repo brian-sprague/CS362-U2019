@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#include <limits.h>
 
 int NUM_TESTS = 2000000;
 
@@ -169,17 +170,18 @@ int main ()
         //Copy contents of postGame to pregame
         memcpy(&preGame, &postGame, sizeof(struct gameState));
 
-        result = rand() % 20;
-        printf("Result is: %f", result);
-        if (result >= 10)
-        {
-            choice = 1;
-        }
+        // result = rand() % 20;
+        // printf("Result is: %f", result);
+        // if (result >= 10)
+        // {
+        //     choice = 1;
+        // }
 
-        else
-        {
-            choice = 0;
-        }
+        // else
+        // {
+        //     choice = 0;
+        // }
+        choice = floor(Random() * MAX_INT);
 
         printf("Player's choice: %d\n", choice);
         
