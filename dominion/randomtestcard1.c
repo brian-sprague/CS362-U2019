@@ -185,7 +185,7 @@ int main ()
         // {
         //     choice = 0;
         // }
-        choice = floor(Random() * MAX_INT);
+        choice = floor(Random() * INT_MAX);
 
         printf("Player's choice: %d\n", choice);
         
