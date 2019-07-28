@@ -126,7 +126,7 @@ int main ()
         printf("*******************************\n");
 
         result = rand() % 255;
-        printf("Result is: %f", result);
+        printf("Result is: %d", result);
         if (result < 85)
         {
             numPlayer = 2;
