@@ -60,9 +60,13 @@ int main () {
       ((char*)&G)[i] = floor(Random() * 256);
     }
     p = floor(Random() * 2);
+    printf("p: %d\n", p);
     G.deckCount[p] = floor(Random() * MAX_DECK);
+    printf("deckCount: %d\n", G.deckCount[p]);
     G.discardCount[p] = floor(Random() * MAX_DECK);
+    printf("discradCount: %d\n", G.discardCount[p]);
     G.handCount[p] = floor(Random() * MAX_HAND);
+    printf("handCount: %d\n", G.handCount[p]);
     checkDrawCard(p, &G);
   }
 
