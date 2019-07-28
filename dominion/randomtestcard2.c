@@ -109,7 +109,7 @@ int main ()
     int seed = time(0);
     int numPlayer, numCards;
     int choice1, choice2;
-    int result;
+    double result;
 
     SelectStream(2);
     PutSeed(3);
@@ -130,7 +130,7 @@ int main ()
         printf("*******************************\n");
 
         result = rand() % 255;
-        printf("Result is: %d", result);
+        // printf("Result is: %d", result);
         if (result < 85)
         {
             numPlayer = 2;
