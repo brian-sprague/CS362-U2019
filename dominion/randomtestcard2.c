@@ -108,7 +108,7 @@ int main ()
     int seed = time(0);
     int numPlayer, numCards;
     int choice1, choice2;
-    double result;
+    int result;
 
     srand(time(0));
     memset(&preGame, 23, sizeof(struct gameState));
@@ -132,7 +132,7 @@ int main ()
             numPlayer = 2;
         }
 
-        else if (result <= 85 && result < 172)
+        else if (result >= 85 && result < 172)
         {
             numPlayer = 3;
         }
