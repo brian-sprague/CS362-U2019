@@ -1,7 +1,7 @@
 /********************************************************************
 * Author: Brian Sprague
 * Assignment 4
-* unittest4.c
+* randomtesrcard3.c
 ********************************************************************/
 
 #include "dominion.h"
@@ -10,86 +10,134 @@
 #include <stdio.h>
 #include <time.h>
 
-void assertTrue(int val1, int val2)
+int NUM_TESTS = 200000;
+
+int assertTrue(int opt, int val1, int val2)
 {
-    if (val1 == val2)
+    if (opt == -2)
     {
-        printf("TEST PASSES.\n");
+        if (val1 < val2)
+        {
+            printf("TEST PASSES.\n");
+            return 1;
+        }
+
+        else
+        {
+            printf("TEST FAILS.\n");
+            return 0;
+        }
+    }
+
+    else if(opt == -1)
+    {
+        if (val1 <= val2)
+        {
+            printf("TEST PASSES.\n");
+            return 1;
+        }
+
+        else
+        {
+            printf("TEST FAILS.\n");
+            return 0;
+        }
+    }
+
+    else if(opt == 0)
+    {
+        if (val1 == val2)
+        {
+            printf("TEST PASSES.\n");
+            return 1;
+        }
+
+        else
+        {
+            printf("TEST FAILS.\n");
+            return 0;
+        }
+    }
+
+    else if(opt == 1)
+    {
+        if (val1 >= val2)
+        {
+            printf("TEST PASSES.\n");
+            return 1;
+        }
+
+        else
+        {
+            printf("TEST FAILS.\n");
+            return 0;
+        }
+    }
+
+    else if(opt == 2)
+    {
+        if (val1 > val2)
+        {
+            printf("TEST PASSES.\n");
+            return 1;
+        }
+
+        else
+        {
+            printf("TEST FAILS.\n");
+            return 0;
+        }
     }
 
     else
     {
-        printf("TEST FAILS.\n");
+        printf("Invalid value entered for opt. Please change.\n");
+        exit(1);
     }
 }
 
 int main ()
 {
-    int i;
+    int i, j;
     int numPlayers = 2;
-    int kCards[10] = {adventurer, council_room, feast, gardens, mine,
-                 remodel, smithy, village, baron, great_hall};
-    struct gameState G;
+    int kCards[10] = {adventurer, council_room, feast, steward, mine,
+                 remodel, copper, village, baron, great_hall};
+    struct gameState preGame, postGame;
     int seed = time(0);
+    int card, numDrawCards;
+
+    srand(time(0));
+    memset(&preGame, 23, sizeof(struct gameState));
+    memset(&postGame, 23, sizeof(struct gameState));
+
 
     printf("*******************************\n");
-    printf("unittest4.c TESTS - Tribute\n");
+    printf("randomtesrcard3.c TESTS - Tribute\n");
     printf("*******************************\n");
 
-    for (i = 0; i < 7; i++)
+    for (i = 0; i < NUM_TESTS; i++)
     {
         // init a new game
-        initializeGame(numPlayers, kCards, seed, &G);
-        G.whoseTurn = 0;
-        G.hand[0][0] = tribute;
-        G.handCount[0] = 1;
+        initializeGame(numPlayers, kCards, seed, &postGame);
+        postGame.hand[0][0] = tribute;
 
-        if (i == 0) // single treasury card
+        // Set the opposing player's deck
+        postGame.deckCount[1] = rand() % MAX_DECK;
+        for (j = 0; j < postGame.deckCount[1]; j++)
         {
-            G.deck[1][0] = copper;  // treasure / 4
-            G.deckCount[1] = 1;
-        }
+            card = rand() % 10;
+            postGame.deck[1][j] = kCards[card];
 
-        else if (i == 1) // single victory card
-        {
-            G.deck[1][0] = estate;  // victory / 1
-            G.deckCount[1] = 1;
-        }
-        
-        else if (i == 2) // single action card
-        {
-            G.deck[1][0] = feast;   // action / 9
-            G.deckCount[1] = 1;
         }
 
-        else if (i == 3) // two victory cards
+        numDrawCards = rand() % MAX_HAND;
+        for (j = 0; j < numDrawCards; j++)
         {
-            G.deck[1][0] = estate;  // victory / 1
-            G.deck[1][1] = estate;  // victory / 1
-            G.deckCount[1] = 2;
-        }
-        
-        else if (i == 4) // two action cards
-        {
-            G.deck[1][0] = feast;   // action / 9
-            G.deck[1][1] = feast;   // action / 9
-            G.deckCount[1] = 2;
+            drawCard(1, &postGame);
         }
 
-        else if (i == 5)
-        {
-            G.discard[1][0] = estate;
-            G.discardCount[1] = 1;
-            G.deckCount[1] = 0;
-        }
-
-        else if (i == 6)
-        {
-            G.discard[1][0] = estate;
-            G.discard[1][1] = feast;
-            G.discardCount[1] = 2;
-            G.deckCount[1] = 0;
-        }
+        //Copy contents of postGame to pregame
+        memcpy(&preGame, &postGame, sizeof(struct gameState));
 
         // Play tribute card
         playCard(0, 0, 0, 0, &G);
@@ -98,54 +146,80 @@ int main ()
         printf("TEST: %d\n", i + 1);
         printf("*******************************\n");
 
-        if (i == 0) // Play treasury card card
+        if (postGame.discardCount[1] == 2) // Revealed single card
         {
-            printf("Size of player 2's discard: %d\n", G.discardCount[1]);
-            assertTrue(G.discardCount[1], 1);
-        }
+            // Played action card
+            if (postGame.discard[1][2] >= 7)
+            printf("Player 1's numActions: %d\n", postGame.numActions);
+            assertTrue(0, preGame.numActions, postGame.numActions - 2);
 
-        else if ( i == 1 || i == 3) // Play victory card
-        {
-            if (i == 1)
-            {
-                printf("Size of player 2's discard: %d\n", G.discardCount[1]);
-                assertTrue(G.discardCount[1], 1);
-            }
+            // Played victory card
+            else if (postGame.discard[1][2] <= 3)
+            printf("Player 1's handCount: %d\n", postGame.handCount[0]);
+            assertTrue(0, preGame.handCount[0], postGame.handCount[0] - 2);
+
             else
             {
-                printf("Size of player 2's discard: %d\n", G.discardCount[1]);
-                assertTrue(G.discardCount[1], 2);
+                printf("Player 1's numActions: %d\n", postGame.numActions);
+                assertTrue(0, preGame.numActions, postGame.numActions);
+                printf("Player 1's handCount: %d\n", postGame.handCount[0]);
+                assertTrue(0, preGame.handCount[0], postGame.handCount[0]);
             }
-
-            printf("Size of player 1's hand: %d\n", G.handCount[0]);
-            assertTrue(G.handCount[0], 2);
+            
         }
 
-        else if (i == 2 || i == 4)
+        else if (postGame.discardCount[1] == 3) // Revealed two cards
         {
-            printf("Size of player 2's discard: %d\n", G.discardCount[1]);
-            if (i == 2)
-            {
-                assertTrue(G.discardCount[1], 1);
-            }
+            // Played action card
+            if (postGame.discard[1][3] >= 7)
+            printf("Player 1's numActions: %d\n", postGame.numActions);
+            assertTrue(0, preGame.numActions, postGame.numActions - 2);
+
+            // Played victory card
+            else if (postGame.discard[1][3] <= 3)
+            printf("Player 1's handCount: %d\n", postGame.handCount[0]);
+            assertTrue(0, preGame.handCount[0], postGame.handCount[0] - 2);
+
             else
             {
-                assertTrue(G.discardCount[1], 2);
+                printf("Player 1's numActions: %d\n", postGame.numActions);
+                assertTrue(0, preGame.numActions, postGame.numActions);
+                printf("Player 1's handCount: %d\n", postGame.handCount[0]);
+                assertTrue(0, preGame.handCount[0], postGame.handCount[0]);
             }
 
-            printf("Number of actions for player 1: %d\n", G.numActions);
-            assertTrue(G.numActions, 3);
+            // Played action card
+            if (postGame.discard[1][2] >= 7)
+            printf("Player 1's numActions: %d\n", postGame.numActions);
+            assertTrue(0, preGame.numActions, postGame.numActions - 2);
+
+            // Played victory card
+            else if (postGame.discard[1][2] <= 3)
+            printf("Player 1's handCount: %d\n", postGame.handCount[0]);
+            assertTrue(0, preGame.handCount[0], postGame.handCount[0] - 2);
+
+            else
+            {
+                printf("Player 1's numActions: %d\n", postGame.numActions);
+                assertTrue(0, preGame.numActions, postGame.numActions);
+                printf("Player 1's handCount: %d\n", postGame.handCount[0]);
+                assertTrue(0, preGame.handCount[0], postGame.handCount[0]);
+            }
         }
 
+        // Revealed no cards
         else
         {
-            printf("Size of player 2's discard: %d\n", G.discardCount[1]);
-            assertTrue(G.discardCount[1], 1);
+            printf("Player 1's numActions: %d\n", postGame.numActions);
+            assertTrue(0, preGame.numActions, postGame.numActions);
+            printf("Player 1's handCount: %d\n", postGame.handCount[0]);
+            assertTrue(0, preGame.handCount[0], postGame.handCount[0]);
         }
         
 
         // Clear out the contents of gameState
-        memset(&G, '\0', sizeof(struct gameState));
+        memset(&postGame, '\0', sizeof(struct gameState));
+        memset(&preGame, '\0', sizeof(struct gameState));
     }
 
     printf("*******************************\n");
