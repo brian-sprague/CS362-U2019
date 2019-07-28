@@ -8,7 +8,9 @@
 #include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
+#include <math.h>
 
 int NUM_TESTS = 200000;
 
@@ -140,7 +142,7 @@ int main ()
         memcpy(&preGame, &postGame, sizeof(struct gameState));
 
         // Play tribute card
-        playCard(0, 0, 0, 0, &G);
+        playCard(0, 0, 0, 0, &postGame);
 
         printf("*******************************\n");
         printf("TEST: %d\n", i + 1);
@@ -150,13 +152,17 @@ int main ()
         {
             // Played action card
             if (postGame.discard[1][2] >= 7)
-            printf("Player 1's numActions: %d\n", postGame.numActions);
-            assertTrue(0, preGame.numActions, postGame.numActions - 2);
+            {
+                printf("Player 1's numActions: %d\n", postGame.numActions);
+                assertTrue(0, preGame.numActions, postGame.numActions - 2);
+            }
 
             // Played victory card
             else if (postGame.discard[1][2] <= 3)
-            printf("Player 1's handCount: %d\n", postGame.handCount[0]);
-            assertTrue(0, preGame.handCount[0], postGame.handCount[0] - 2);
+            {
+                printf("Player 1's handCount: %d\n", postGame.handCount[0]);
+                assertTrue(0, preGame.handCount[0], postGame.handCount[0] - 2);
+            }
 
             else
             {
@@ -172,13 +178,17 @@ int main ()
         {
             // Played action card
             if (postGame.discard[1][3] >= 7)
-            printf("Player 1's numActions: %d\n", postGame.numActions);
-            assertTrue(0, preGame.numActions, postGame.numActions - 2);
+            {
+                printf("Player 1's numActions: %d\n", postGame.numActions);
+                assertTrue(0, preGame.numActions, postGame.numActions - 2);
+            }
 
             // Played victory card
             else if (postGame.discard[1][3] <= 3)
-            printf("Player 1's handCount: %d\n", postGame.handCount[0]);
-            assertTrue(0, preGame.handCount[0], postGame.handCount[0] - 2);
+            {
+                printf("Player 1's handCount: %d\n", postGame.handCount[0]);
+                assertTrue(0, preGame.handCount[0], postGame.handCount[0] - 2);
+            }
 
             else
             {
@@ -190,13 +200,17 @@ int main ()
 
             // Played action card
             if (postGame.discard[1][2] >= 7)
-            printf("Player 1's numActions: %d\n", postGame.numActions);
-            assertTrue(0, preGame.numActions, postGame.numActions - 2);
+            {
+                printf("Player 1's numActions: %d\n", postGame.numActions);
+                assertTrue(0, preGame.numActions, postGame.numActions - 2);
+            }
 
             // Played victory card
             else if (postGame.discard[1][2] <= 3)
-            printf("Player 1's handCount: %d\n", postGame.handCount[0]);
-            assertTrue(0, preGame.handCount[0], postGame.handCount[0] - 2);
+            {
+                printf("Player 1's handCount: %d\n", postGame.handCount[0]);
+                assertTrue(0, preGame.handCount[0], postGame.handCount[0] - 2);
+            }
 
             else
             {
