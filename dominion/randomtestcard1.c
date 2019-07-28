@@ -150,7 +150,7 @@ int main ()
             numPlayer = 2;
         }
 
-        else if (result <= 85 && result < 172)
+        else if (result >= 85 && result < 172)
         {
             numPlayer = 3;
         }
@@ -186,7 +186,6 @@ int main ()
         //     choice = 0;
         // }
         choice = floor(Random() * INT_MAX);
-
         printf("Player's choice: %d\n", choice);
         
 

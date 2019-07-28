@@ -114,7 +114,7 @@ int main ()
     SelectStream(2);
     PutSeed(3);
 
-    srand(time(0));
+    // srand(time(0));
     memset(&preGame, 23, sizeof(struct gameState));
     memset(&postGame, 23, sizeof(struct gameState));
 
