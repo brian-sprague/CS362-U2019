@@ -122,6 +122,9 @@ int main ()
     int choice;
     int hasEstate;
 
+    SelectStream(2);
+    PutSeed(3);
+
     srand(time(0));
     memset(&preGame, 23, sizeof(struct gameState));
     memset(&postGame, 23, sizeof(struct gameState));
@@ -140,6 +143,7 @@ int main ()
         printf("*******************************\n");
 
         result = rand() % 255;
+        
         printf("Result is: %f", result);
         if (result < 85)
         {
