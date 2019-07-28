@@ -12,7 +12,7 @@
 #include <time.h>
 #include <math.h>
 
-int NUM_TESTS = 2000000;
+int NUM_TESTS = 20000000;
 
 int assertTrue(int opt, int val1, int val2)
 {
