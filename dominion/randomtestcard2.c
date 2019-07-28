@@ -8,7 +8,9 @@
 #include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
+#include <math.h>
 
 int NUM_TESTS = 2000000;
 
@@ -104,7 +106,8 @@ int main ()
     struct gameState preGame, postGame;
     int seed = time(0);
     int numPlayer, numCards;
-    int result, choice1, choice2;
+    int choice1, choice2;
+    double result;
 
     srand(time(0));
     memset(&preGame, 23, sizeof(struct gameState));
@@ -184,7 +187,7 @@ int main ()
         }
 
         // Play minion card
-        playCard(0, choice1, choice2, 0, &G);
+        playCard(0, choice1, choice2, 0, &postGame);
 
         
         
