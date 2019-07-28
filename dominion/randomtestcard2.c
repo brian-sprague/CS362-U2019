@@ -162,30 +162,32 @@ int main ()
         memcpy(&preGame, &postGame, sizeof(struct gameState));
 
         // Set choice1 to either positive or negative
-        result = rand() % 20;
-        printf("Result is: %f", result);
-        if (result >= 10)
-        {
-            choice1 = rand() % INT_MIN;
-        }
+        choice1 = rand() % INT_MIN;
+        // result = rand() % 20;
+        // printf("Result is: %f", result);
+        // if (result >= 10)
+        // {
+        //     choice1 = rand() % INT_MIN;
+        // }
 
-        else
-        {
-            choice1 = rand() % INT_MAX;
-        }
+        // else
+        // {
+        //     choice1 = rand() % INT_MAX;
+        // }
 
         // Set choice1 to either positive or negative
-        result = rand() % 20;
-        printf("Result is: %f", result);
-        if (result >= 10)
-        {
-            choice2 = rand() % INT_MIN;
-        }
+        choice2 = rand() % INT_MIN;
+        // result = rand() % 20;
+        // printf("Result is: %f", result);
+        // if (result >= 10)
+        // {
+        //     choice2 = rand() % INT_MIN;
+        // }
 
-        else
-        {
-            choice2 = rand() % INT_MAX;
-        }
+        // else
+        // {
+        //     choice2 = rand() % INT_MAX;
+        // }
 
         // Play minion card
         playCard(0, choice1, choice2, 0, &postGame);
