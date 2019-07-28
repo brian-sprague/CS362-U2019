@@ -162,7 +162,7 @@ int main ()
 
         // Set choice1 to either positive or negative
         result = rand() % 20;
-        printf("choice1 is: %d\n", choice1);
+        printf("result is: %d\n", choice1);
         if (result >= 10)
         {
             choice1 = 1;
@@ -175,7 +175,7 @@ int main ()
 
         // Set choice1 to either positive or negative
         result = rand() % 20;
-        printf("choice2 is: %d\n", choice2);
+        printf("result is: %d\n", choice2);
         if (result >= 10)
         {
             choice2 = 1;
