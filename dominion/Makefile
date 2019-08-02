@@ -40,16 +40,6 @@ unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c unittest5.c car
 	unittest4 >> unittest4results.out
 	gcc -o unittest5 unittest5.c -g dominion.o rngs.o $(CFLAGS)
 	unittest5 >> unittest5results.out
-	gcc -o cardtest1 cardtest1.c -g dominion.o rngs.o $(CFLAGS)
-	cardtest1 >> cardtest1results.out
-	gcc -o cardtest2 cardtest2.c -g dominion.o rngs.o $(CFLAGS)
-	cardtest2 >> cardtest2results.out
-	gcc -o cardtest3 cardtest3.c -g dominion.o rngs.o $(CFLAGS)
-	cardtest3 >> cardtest3results.out
-	gcc -o cardtest4 cardtest4.c -g dominion.o rngs.o $(CFLAGS)
-	cardtest4 >> cardtest4results.out
-	gcc -o cardtest5 cardtest5.c -g dominion.o rngs.o $(CFLAGS)
-	cardtest5 >> cardtest5results.out
 	gcc -o randomtestcard1 randomtestcard1.c -g dominion.o rngs.o $(CFLAGS)
 	randomtestcard1 >> randomtest1results.out
 	gcc -o randomtestcard2 randomtestcard2.c -g dominion.o rngs.o $(CFLAGS)
