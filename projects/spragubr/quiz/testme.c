@@ -9,9 +9,9 @@ char inputChar()
     char c = rand() % 127;
 
     // If the char is an unreadable char add 33 to get a new char
-    if (c < 33)
+    if (c < 32)
     {
-        c += 33;
+        c += 32;
     }
 
     return c;
@@ -30,13 +30,13 @@ char *inputString()
         {
             str[i] = '\0';
         }
-        
+
         else
         {
             c = rand() % 127;
-            if (c < 33)
+            if (c < 32)
             {
-                c += 33;
+                c += 32;
             }
 
             str[i] = c;
