@@ -34,6 +34,8 @@ testme.o: testme.c
 
 testme: testme.o
 	gcc -o testme -g testme.o $(CFLAGS)
+	./testme
+	gcov testme.c >> testmeresult.out
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
